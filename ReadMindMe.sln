@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadMindMe.Domain", "ReadMindMe.Domain\ReadMindMe.Domain.csproj", "{E353634E-CAA6-47ED-852F-705754F9E85E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadMindMe.Application", "ReadMindMe.Application\ReadMindMe.Application.csproj", "{6F3F3FC3-5FB9-4462-8868-0F878430AFBA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadMindMe.Infrastructure", "ReadMindMe.Infrastructure\ReadMindMe.Infrastructure.csproj", "{185BFB98-37B7-49AB-9D3D-91DACB1D8081}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadMindMe.API", "ReadMindMe.API\ReadMindMe.API.csproj", "{3198E6AC-E9AB-4658-89D7-CFDA0C309D2B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E353634E-CAA6-47ED-852F-705754F9E85E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E353634E-CAA6-47ED-852F-705754F9E85E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E353634E-CAA6-47ED-852F-705754F9E85E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E353634E-CAA6-47ED-852F-705754F9E85E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F3F3FC3-5FB9-4462-8868-0F878430AFBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F3F3FC3-5FB9-4462-8868-0F878430AFBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F3F3FC3-5FB9-4462-8868-0F878430AFBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F3F3FC3-5FB9-4462-8868-0F878430AFBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{185BFB98-37B7-49AB-9D3D-91DACB1D8081}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{185BFB98-37B7-49AB-9D3D-91DACB1D8081}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{185BFB98-37B7-49AB-9D3D-91DACB1D8081}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{185BFB98-37B7-49AB-9D3D-91DACB1D8081}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3198E6AC-E9AB-4658-89D7-CFDA0C309D2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3198E6AC-E9AB-4658-89D7-CFDA0C309D2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3198E6AC-E9AB-4658-89D7-CFDA0C309D2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3198E6AC-E9AB-4658-89D7-CFDA0C309D2B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

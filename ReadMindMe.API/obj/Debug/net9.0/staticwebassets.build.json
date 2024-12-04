@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "DvBRpbJm6nrVWLCQ4a0XLCCq0VvSr2TMqFjlWknBYpA=",
+  "Source": "ReadMindMe.API",
+  "BasePath": "_content/ReadMindMe.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
