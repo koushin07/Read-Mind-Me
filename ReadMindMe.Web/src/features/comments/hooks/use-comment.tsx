@@ -8,7 +8,6 @@ import { RootState } from "@/store/store";
 import { setCurrentCommunity } from "@/features/communities/communitySlice";
 
 export const useComment = (
-  posts: PostResponse[],
   setPosts: React.Dispatch<React.SetStateAction<PostResponse[]>>
 ) => {
   const { auth } = useAuth();
@@ -16,6 +15,7 @@ export const useComment = (
     (state: RootState) => state.communities
   );
   const dispatch = useDispatch();
+
   const handleCommentSubmit = async (post: PostResponse, content: string) => {
     console.log(content);
     if (content.length <= 0) {
@@ -38,17 +38,20 @@ export const useComment = (
       content: content,
       avatar: "/placeholder.svg?height=32&width=32",
     };
-    console.log(currentCommunity);
-    dispatch(
-      setCurrentCommunity({
-        ...currentCommunity, // Spread the existing community properties
-        posts: currentCommunity!.posts.map((p) =>
-          p.id === post.id
-            ? { ...p, comments: [...p.comments, tempComment] } // Update the specific post
-            : p
-        ),
-      })
-    );
+
+    if (currentCommunity) {
+      dispatch(
+        setCurrentCommunity({
+          ...currentCommunity, // Spread the existing community properties
+          posts: currentCommunity!.posts.map((p) =>
+            p.id === post.id
+              ? { ...p, comments: [...p.comments, tempComment] } // Update the specific post
+              : p
+          ),
+        })
+      );
+    }
+
 
     // Optimistically update state
     setPosts((prevPosts) =>
@@ -63,7 +66,7 @@ export const useComment = (
       dispatch(
         setCurrentCommunity({
           ...currentCommunity, // Spread the existing community properties
-          posts: currentCommunity!.posts.map((p) =>
+          posts: currentCommunity?.posts.map((p) =>
             p.id === post.id
               ? { ...p, comments: [...p.comments, tempComment] } // Update the specific post
               : p

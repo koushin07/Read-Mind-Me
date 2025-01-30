@@ -13,3 +13,4 @@ C:\Users\canar\OneDrive\Documents\DotNet\ReadMindMe\ReadMindMe.Application\obj\D
 C:\Users\canar\OneDrive\Documents\DotNet\ReadMindMe\ReadMindMe.Application\obj\Debug\net8.0\refint\ReadMindMe.Application.dll
 C:\Users\canar\OneDrive\Documents\DotNet\ReadMindMe\ReadMindMe.Application\obj\Debug\net8.0\ReadMindMe.Application.pdb
 C:\Users\canar\OneDrive\Documents\DotNet\ReadMindMe\ReadMindMe.Application\obj\Debug\net8.0\ref\ReadMindMe.Application.dll
+C:\Users\canar\OneDrive\Documents\DotNet\ReadMindMe\ReadMindMe.Application\obj\Debug\net8.0\ReadMindMe.Application.sourcelink.json

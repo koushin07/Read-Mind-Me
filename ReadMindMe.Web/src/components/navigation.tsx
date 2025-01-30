@@ -12,6 +12,7 @@ import {
   CircleAlert,
   BookOpen,
 } from "lucide-react";
+import * as signalR from "@microsoft/signalr";
 
 import { Link, NavLink } from "react-router-dom";
 import { SheetTrigger, SheetContent, Sheet } from "./ui/sheet";
@@ -59,8 +60,23 @@ function Navigation() {
     },
   ];
 
-
   useEffect(() => {
+    const connection = new signalR.HubConnectionBuilder()
+          .withUrl("http://localhost:5081/hubs/presence", {
+            accessTokenFactory: () => token!, // Add auth token if needed
+          })
+          .withAutomaticReconnect()
+          .build();
+
+    connection
+      .start()
+      .then(() => console.log("SignalR Notification started"))
+      .catch((err) => console.error("SignalR connection error: ", err));
+
+    connection.on("ReceiveNotification", (message: string) => {
+      alert(message); // Handle the received notification
+    });
+
     const stringUser = localStorage.getItem("user");
 
     if (stringUser && token) {
@@ -69,9 +85,7 @@ function Navigation() {
       // dispatch(setUser(user));
       dispatch(setLogin({ token, user }));
       createConnection();
-
     }
-
   }, []);
   return (
     <header className="px-4 lg:px-6 h-14 flex items-center">
@@ -149,10 +163,13 @@ function Navigation() {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent className="w-56" align="end" forceMount>
-            <DropdownMenuItem>
-              <Settings className="mr-2 h-4 w-4" />
-              <Link to={"account/settings"}>Settings</Link>
-            </DropdownMenuItem>
+            <Link to={"account/settings"}>
+              <DropdownMenuItem>
+                <Settings className="mr-2 h-4 w-4" />
+                Settings
+              </DropdownMenuItem>
+            </Link>
+
             <DropdownMenuItem onClick={handleLogout}>
               <LogOut className="mr-2 h-4 w-4" />
               Log out

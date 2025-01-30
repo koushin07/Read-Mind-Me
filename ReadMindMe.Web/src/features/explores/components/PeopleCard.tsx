@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card"
-import { People } from "@/types/user"
+import { People } from "@/features/user/types/user"
+
 import { Avatar, AvatarImage, AvatarFallback } from "@radix-ui/react-avatar"
 import { Users } from "lucide-react"
 
@@ -25,8 +26,8 @@ function PeopleCard({user, onFollow}: peopleProp) {
       </div>
     </CardHeader>
     <CardFooter>
-      <Button 
-        className="w-full" 
+      <Button
+        className="w-full"
         variant={user.following ? "outline" : "default"}
         onClick={() => onFollow (user.id)}
       >

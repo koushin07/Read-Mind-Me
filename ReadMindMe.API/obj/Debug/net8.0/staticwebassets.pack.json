@@ -1,0 +1,37 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\canar\\OneDrive\\Documents\\DotNet\\ReadMindMe\\ReadMindMe.API\\wwwroot\\assets\\index-C8L1HvWp.js",
+      "PackagePath": "staticwebassets\\assets\\index-C8L1HvWp.js"
+    },
+    {
+      "Id": "C:\\Users\\canar\\OneDrive\\Documents\\DotNet\\ReadMindMe\\ReadMindMe.API\\wwwroot\\assets\\index-CDoRbH8E.css",
+      "PackagePath": "staticwebassets\\assets\\index-CDoRbH8E.css"
+    },
+    {
+      "Id": "C:\\Users\\canar\\OneDrive\\Documents\\DotNet\\ReadMindMe\\ReadMindMe.API\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "C:\\Users\\canar\\OneDrive\\Documents\\DotNet\\ReadMindMe\\ReadMindMe.API\\wwwroot\\vite.svg",
+      "PackagePath": "staticwebassets\\vite.svg"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.ReadMindMe.API.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.ReadMindMe.API.props",
+      "PackagePath": "build\\ReadMindMe.API.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.ReadMindMe.API.props",
+      "PackagePath": "buildMultiTargeting\\ReadMindMe.API.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.ReadMindMe.API.props",
+      "PackagePath": "buildTransitive\\ReadMindMe.API.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

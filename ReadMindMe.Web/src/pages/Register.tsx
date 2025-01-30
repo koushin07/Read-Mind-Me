@@ -16,37 +16,16 @@ import {
 } from "@/components/ui/form";
 
 import { z } from "zod";
-import { useForm } from "react-hook-form";
-
-import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
+import { useAuth } from "@/features/auth/hooks/use-auth";
 
-const formSchema = z
-  .object({
-    name: z.string().min(3).max(50),
-    email: z.string().email(),
-    password: z.string().min(8).max(50),
-    confirmPassword: z.string().min(8).max(50),
-  })
-  .refine((data) => data.password === data.confirmPassword, {
-    message: "Passwords do not match",
-    path: ["confirmPassword"],
-  });
 export default function RegisterPage() {
   const [isLoading, setIsLoading] = useState(false);
+  const { registerFormSchema: _registerFormSchema, registerForm } = useAuth();
   const navigate = useNavigate();
 
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      name: "",
-      email: "",
-      password: "",
-      confirmPassword: "",
-    },
-  });
 
-  const onSubmit = async (data: z.infer<typeof formSchema>) => {
+  const onSubmit = async (data: z.infer<typeof _registerFormSchema>) => {
     console.log(data);
     setIsLoading((prev) => !prev);
     try {
@@ -62,43 +41,13 @@ export default function RegisterPage() {
       setIsLoading((prev) => !prev);
       navigate("/login");
     } catch (err) {
-      console.log(err)
+      console.log(err);
 
       setIsLoading((prev) => !prev);
     }
   };
-
-  // const [formData, setFormData] = useState<registerType>({
-  //   name: "",
-  //   email: "",
-  //   password: "",
-  //   confirmPassword: "",
-  // });
-
-  // const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   const { name, value } = e.target;
-  //   setFormData((prev) => ({ ...prev, [name]: value }));
-  // };
-
-  // const handleSubmit = async (e: React.FormEvent) => {
-  //   e.preventDefault();
-  //   // Here you would typically send the form data to your backend
-  //   console.log("Form submitted:", formData);
-  //   try {
-  //     await register(formData);
-  //     toast.success("Success Registration", {
-  //       description: "you can now login to your account",
-  //     });
-  //     navigate("/login");
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-
-  // For now, we'll just log the data
-  // };
-
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen font-karla text-[#8B4513] bg-gradient-radial-to-bm from-[#F1E0CB] to-15% to-[#F5F2EE]">
       <header className="px-4 lg:px-6 h-14 flex items-center">
         <Link className="flex items-center justify-center" to="/">
           <BookOpen className="h-6 w-6 mr-2" />
@@ -106,17 +55,20 @@ export default function RegisterPage() {
         </Link>
       </header>
       <main className="flex-1 flex items-center justify-center">
-        <div className="w-full max-w-md space-y-8 px-4 py-8">
+        <div className="w-full bg-white shadow rounded-lg max-w-md space-y-8 px-4 py-8">
           <div className="space-y-2 text-center">
             <h1 className="text-3xl font-bold">Create Your Account</h1>
             <p className="text-gray-500 dark:text-gray-400">
               Enter your information to get started
             </p>
           </div>
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+          <Form {...registerForm}>
+            <form
+              onSubmit={registerForm.handleSubmit(onSubmit)}
+              className="space-y-4"
+            >
               <FormField
-                control={form.control}
+                control={registerForm.control}
                 name="name"
                 render={({ field }) => (
                   <FormItem className="space-y-2">
@@ -129,7 +81,7 @@ export default function RegisterPage() {
                 )}
               />
               <FormField
-                control={form.control}
+                control={registerForm.control}
                 name="email"
                 render={({ field }) => (
                   <FormItem className="space-y-2">
@@ -146,7 +98,7 @@ export default function RegisterPage() {
                 )}
               />
               <FormField
-                control={form.control}
+                control={registerForm.control}
                 name="password"
                 render={({ field }) => (
                   <FormItem className="space-y-2">
@@ -163,7 +115,7 @@ export default function RegisterPage() {
                 )}
               />
               <FormField
-                control={form.control}
+                control={registerForm.control}
                 name="confirmPassword"
                 render={({ field }) => (
                   <FormItem className="space-y-2">

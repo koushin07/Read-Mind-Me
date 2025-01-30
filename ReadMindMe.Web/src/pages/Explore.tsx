@@ -1,10 +1,10 @@
-import { useState } from "react";
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Search } from "lucide-react";
 import TrendingTab from "@/features/explores/components/TrendingTab";
-import { Comment } from "@/features/comments/types/commentType";
 import TopicCard from "@/features/explores/components/TopicCard";
 import PeopleCard from "@/features/explores/components/PeopleCard";
 import { PostResponse, trending } from "@/features/posts/types/postType";
@@ -15,14 +15,20 @@ import { useAuth } from "@/features/auth/hooks/use-auth";
 export default function ExplorePage() {
   const {auth} =useAuth()
   const {fetchTrendingPosts} =usePost(auth.user)
-  const [trendingPosts, setTrendingPosts] = useState(fetchTrendingPosts())
-  const [trendingTopics, setTrendingTopics] = useState<trending[]>([
+  const [trendingPosts, setTrendingPosts] = useState<PostResponse[]>()
+  const [trendingTopics] = useState<trending[]>([
     { id: 1, name: "Interfaith Dialogue", posts: 1250 },
     { id: 2, name: "Meditation Practices", posts: 980 },
     { id: 3, name: "Spiritual Growth", posts: 875 },
     { id: 4, name: "Religious Festivals", posts: 750 },
     { id: 5, name: "Faith and Science", posts: 620 },
   ]);
+
+  useEffect(() => {
+    fetchTrendingPosts().then(res => {
+      setTrendingPosts(res);
+    });
+  },[])
 
   const [suggestedUsers, setSuggestedUsers] = useState<People[]>([
     {
@@ -72,7 +78,7 @@ export default function ExplorePage() {
 
   const handleLike = (postId: number) => {
     setTrendingPosts((posts) =>
-      posts.map((post) =>
+      posts!.map((post) =>
         post.id === postId ? { ...post, likes: post.likes + 1 } : post
       )
     );
@@ -111,7 +117,7 @@ export default function ExplorePage() {
             <TabsTrigger value="people">People</TabsTrigger>
           </TabsList>
           <TabsContent value="trending">
-            <TrendingTab onLike={handleLike} trendings={trendingPosts} />
+            <TrendingTab onLike={handleLike} trendings={trendingPosts!} />
           </TabsContent>
           <TabsContent value="topics">
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">

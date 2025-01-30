@@ -22,5 +22,7 @@ public class AuthenticationProfile : Profile
         CreateMap<UserDto, AuthenticatedResponse>();
 
         CreateMap<UserUpdateDto, UpdateUserRequest>().ReverseMap();
+
+        CreateMap<OAuthRequest, OAuthLogin>().ReverseMap();
     }
 }

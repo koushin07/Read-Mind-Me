@@ -82,3 +82,12 @@ export const postFormSchema = z.object({
             .default("Bible"),
     }),
 });
+
+
+export interface PostActivity {
+    id: number;
+    content: string;
+    likeCount: number;
+    commentCount: number;
+    createdAt: string;
+}

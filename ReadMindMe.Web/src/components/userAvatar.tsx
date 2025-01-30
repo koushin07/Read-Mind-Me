@@ -1,5 +1,5 @@
 import { User } from "@/features/user/types/user";
-import React, { useMemo } from "react";
+import { useMemo } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store/store";

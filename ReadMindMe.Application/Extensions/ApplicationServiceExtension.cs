@@ -18,6 +18,7 @@ public static class ApplicationServiceExtension
         services.AddScoped<IPostService, PostService>();
         services.AddScoped<ICommunityService, CommunityService>();
         services.AddScoped<ICommentService, CommentService>();
+        services.AddScoped<IMessagesService, MessageService>();
         services.AddFluentValidationAutoValidation();
 
         return services;

@@ -22,9 +22,13 @@ public class MyDbContext : DbContext
     public DbSet<Comment> Comments { get; set; }
     public DbSet<Community> Communities { get; set; }
     public DbSet<PostLike> PostLikes { get; set; }
-    public DbSet<UserCommunity> userCommunities { get; set; }
-    public DbSet<Activity> activities { get; set; }
-    public DbSet<Guideline> guidelines { get; set; }
+    public DbSet<UserCommunity> UserCommunities { get; set; }
+    public DbSet<Activity> Activities { get; set; }
+    public DbSet<Guideline> Guidelines { get; set; }
+    public DbSet<Conversation> Conversations { get; set; }
+    public DbSet<Message> Messages { get; set; }
+    public DbSet<Participant> Participants { get; set; }
+    public DbSet<UserFollow> UserFollows { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -40,9 +44,7 @@ public class MyDbContext : DbContext
         modelBuilder.Entity<Community>().HasMany(c => c.Guidelines).WithOne(g => g.Community);
         modelBuilder.Entity<Guideline>().HasOne(g => g.Community).WithMany(c => c.Guidelines);
 
-        modelBuilder.Entity<Activity>()
-       .HasOne<Community>(a => a.Community)
-       .WithMany(uc => uc.Activities);
+
 
         modelBuilder.Entity<PostLike>()
         .HasKey(pl => new { pl.UserId, pl.PostId });
@@ -82,7 +84,26 @@ public class MyDbContext : DbContext
         modelBuilder.Entity<UserFollow>()
             .HasOne(uf => uf.Followed)
             .WithMany(u => u.Followeds)
-            .HasForeignKey(uf => uf.FollowedId).OnDelete(DeleteBehavior.Cascade);
+            .HasForeignKey(uf => uf.FollowedId).OnDelete(DeleteBehavior.NoAction);
+
+        modelBuilder.Entity<Message>()
+            .HasOne<User>(m => m.Sender)
+            .WithMany(u => u.SendMessages)
+            .HasForeignKey(m => m.SenderId)
+            .OnDelete(DeleteBehavior.NoAction);
+
+        modelBuilder.Entity<Conversation>()
+            .HasMany(c => c.Participants)
+            .WithOne(c => c.Conversation);
+        modelBuilder.Entity<Conversation>()
+            .HasMany(c => c.Messages)
+            .WithOne(m => m.Conversation);
+
+        modelBuilder.Entity<User>()
+            .HasMany(u => u.Participants)
+            .WithOne(p => p.User);
+
+
     }
 
 
@@ -94,7 +115,9 @@ public class MyDbContext : DbContext
 
     public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
     {
-        SetCreatedAtTimestamps();
+
+
+         SetCreatedAtTimestamps();
         return base.SaveChangesAsync(cancellationToken);
     }
 
@@ -108,7 +131,7 @@ public class MyDbContext : DbContext
         {
             foreach (var entry in entries)
             {
-                ((BaseEntity)entry.Entity).CreatedAt = DateTime.Now;
+                ((BaseEntity)entry.Entity).CreatedAt = DateTime.UtcNow;
             }
         }
 

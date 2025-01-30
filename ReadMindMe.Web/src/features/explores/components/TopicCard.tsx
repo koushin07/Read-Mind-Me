@@ -1,7 +1,8 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/card";
-import { trending } from "@/types/post";
+import { trending } from "@/features/posts/types/postType";
+
 import { TrendingUp } from "lucide-react";
 
 

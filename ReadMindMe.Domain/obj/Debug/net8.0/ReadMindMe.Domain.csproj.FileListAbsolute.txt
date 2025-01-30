@@ -9,3 +9,4 @@ C:\Users\canar\OneDrive\Documents\DotNet\ReadMindMe\ReadMindMe.Domain\obj\Debug\
 C:\Users\canar\OneDrive\Documents\DotNet\ReadMindMe\ReadMindMe.Domain\obj\Debug\net8.0\refint\ReadMindMe.Domain.dll
 C:\Users\canar\OneDrive\Documents\DotNet\ReadMindMe\ReadMindMe.Domain\obj\Debug\net8.0\ReadMindMe.Domain.pdb
 C:\Users\canar\OneDrive\Documents\DotNet\ReadMindMe\ReadMindMe.Domain\obj\Debug\net8.0\ref\ReadMindMe.Domain.dll
+C:\Users\canar\OneDrive\Documents\DotNet\ReadMindMe\ReadMindMe.Domain\obj\Debug\net8.0\ReadMindMe.Domain.sourcelink.json

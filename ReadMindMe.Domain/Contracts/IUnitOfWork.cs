@@ -10,6 +10,10 @@ public interface IUnitOfWork
     ICommunityRepository CommunityRepository { get; }
     IUserCommunityRepository UserCommunityRepository { get; }
     IActivityRepository ActivityRepository { get; }
+    IMessageRepository MessageRepository { get; }
+    IConversationRepository ConversationRepository { get; }
+    IParticipantRepository ParticipantRepository { get; }
+    IUserFollowRepository UserFollowRepository { get; }
     Task<bool> Complete();
     bool HasChanges();
 }

@@ -18,6 +18,7 @@ import PostActionMenu from "./PostActionMenu";
 import { useState } from "react";
 import PostBadge from "./PostBadge";
 import UserAvatar from "@/components/userAvatar";
+import { Link } from "react-router-dom";
 
 type postProp = {
   post: PostResponse;
@@ -38,13 +39,15 @@ function PostCard({
 }: postProp) {
   const [showMoreComments, setShowMoreComments] = useState(false);
   return (
-    <Card>
+    <Card className="">
       <CardHeader>
         <div className="flex justify-between">
           <div className="flex items-center space-x-4">
             <UserAvatar user={post.author}/>
             <div>
-              <CardTitle className="text-lg">{post.author.name}</CardTitle>
+              <CardTitle className="text-lg">
+                <Link className="hover:underline" to={`/profile/${post.author.slug}`}>{post.author.name}</Link>
+              </CardTitle>
               <CardDescription className="">
                 {" "}
                 <TimeAgo timeStamp={post.createdAt} />{" "}

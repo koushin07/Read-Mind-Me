@@ -23,7 +23,7 @@ public class CommunityProfile : Profile
         }));
         CreateMap<CommunityDto, Community>();
 
-        CreateMap<ActivityDto, Activity>().ForMember(x => x.Community, opt => opt.Ignore());
+
         CreateMap<Activity, ActivityDto>().ForMember(x => x.Community, opt => opt.Ignore());
         CreateMap<UserCommunity, UserCommunityDto>().ReverseMap();
         CreateMap<Guideline, GuidelineDto>().ReverseMap();

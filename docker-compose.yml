@@ -1,0 +1,40 @@
+version: '3.4'
+
+services:
+  readmindme.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP=5000
+      - ASPNETCORE_HTTPS=5001
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+
+    image: ${DOCKER_REGISTRY-}readmindmeapi
+    build:
+      context: .
+      dockerfile: ReadMindMe.API/Dockerfile
+    depends_on:
+      readmindme.database:
+        condition: service_healthy
+   # command: ["dotnet", "ef", "database", "update"]
+
+  readmindme.database:
+    image: postgres:16
+    container_name: readmindme.database
+    environment:
+      - POSTGRES_DB=readmindmeDb
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+    #below is to save the database data even if we close docker connection
+    volumes:
+      - ./.containers/readmindme-db:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+

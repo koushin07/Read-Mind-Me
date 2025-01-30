@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ReadMindMe.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b6060d5a4749cb6b1f738c341eadb4a027d4fa85")]
 [assembly: System.Reflection.AssemblyProductAttribute("ReadMindMe.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ReadMindMe.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

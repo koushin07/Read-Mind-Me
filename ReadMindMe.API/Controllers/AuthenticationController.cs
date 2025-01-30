@@ -43,4 +43,16 @@ public class AuthenticationController : ControllerBase
             Token = token
         });
     }
+    [HttpPost("Oauth")]
+    public async Task<ActionResult<AuthenticatedResponse>> LoginViaGoogle(OAuthLogin auth)
+    {
+        var OAuth = _mapper.Map<OAuthRequest>(auth);
+        var authUser = await _userService.LoginViaGoogle(OAuth);
+        var token = _tokenService.CreateToken(authUser);
+        return Ok(new AuthenticatedResponse()
+        {
+            User = authUser,
+            Token = token
+        });
+    }
 }

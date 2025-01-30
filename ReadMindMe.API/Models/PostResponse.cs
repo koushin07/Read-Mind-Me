@@ -17,5 +17,6 @@ public class PostResponse
     public VerseDto Verse { get; set; }
     public UserDto Author { get; set; }
     public List<CommentDto> Comments { get; set; }
+    public DateTime CreatedAt { get; set; }
 
 }

@@ -1,11 +1,11 @@
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 import { TabsContent } from "@/components/ui/tabs";
 import PostForm from "@/features/posts/components/PostForm";
-import { CreateCommunityPost, postFormSchema, Verse } from "@/features/posts/types/postType";
+import {
+  CreateCommunityPost,
+  postFormSchema,
+  Verse,
+} from "@/features/posts/types/postType";
 import { z } from "zod";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store/store";
@@ -13,7 +13,6 @@ import { usePost } from "@/features/posts/hooks/use-post";
 import PostCard from "@/features/posts/components/PostCard";
 import { useComment } from "@/features/comments/hooks/use-comment";
 import { useCommunity } from "../hooks/use-community";
-import { useState } from "react";
 
 type postTabProp = {
   value: string;
@@ -27,18 +26,14 @@ function CommunityPostTab({ value, isJoined }: postTabProp) {
   );
 
   const {
-    handleLike,
+    handleLikePostCommunity,
 
     handlePostDelete,
     handleUpdatePost,
-    posts,
     setPosts,
   } = usePost(auth.user);
-  const { handleCommentSubmit, handleCommentDelete } = useComment(
-    posts,
-    setPosts
-  );
-  const { submitCommunityPost} = useCommunity()
+  const { handleCommentSubmit, handleCommentDelete } = useComment(setPosts);
+  const { submitCommunityPost } = useCommunity();
 
   const handlePostSubmit = (data: z.infer<typeof postFormSchema>) => {
     submitCommunityPost({
@@ -48,7 +43,9 @@ function CommunityPostTab({ value, isJoined }: postTabProp) {
       postType: data.postType,
       communityId: currentCommunity?.id,
     } as CreateCommunityPost);
-
+  };
+  const liked = (postId: number) => {
+     handleLikePostCommunity(postId, currentCommunity!)
   }
 
   return (
@@ -65,7 +62,7 @@ function CommunityPostTab({ value, isJoined }: postTabProp) {
             post={post}
             onPostUpdate={handleUpdatePost}
             onPostDelete={handlePostDelete}
-            onLike={handleLike}
+            onLike={liked}
             onCommentSubmit={handleCommentSubmit}
             onCommentDelete={handleCommentDelete}
           />

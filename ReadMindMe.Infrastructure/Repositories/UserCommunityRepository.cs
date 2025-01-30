@@ -31,12 +31,12 @@ public class UserCommunityRepository : IUserCommunityRepository
 
     public async Task<UserCommunity> GetUserCommunityByUserAndCommunityId(int userId, int communityId)
     {
-        return await _context.userCommunities.FirstOrDefaultAsync(uc => uc.UserId == userId && uc.CommunityId == communityId);
+        return await _context.UserCommunities.FirstOrDefaultAsync(uc => uc.UserId == userId && uc.CommunityId == communityId);
     }
 
     public async Task<UserCommunity> Insert(UserCommunity entity)
     {
-        var userCommunity = await _context.userCommunities.AddAsync(entity);
+        var userCommunity = await _context.UserCommunities.AddAsync(entity);
         return userCommunity.Entity;
     }
 

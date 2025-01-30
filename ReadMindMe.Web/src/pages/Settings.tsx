@@ -36,7 +36,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Checkbox } from "@/components/ui/checkbox";
 
 import { Eye, EyeOff } from "lucide-react";
-import Navigation from "@/components/navigation";
 import ProfileTab from "@/features/user/components/ProfileTab";
 
 
@@ -112,6 +111,7 @@ export default function SettingsPage() {
 
 
   function onSecuritySubmit(data: SecurityFormValues) {
+    console.log(data)
     // toast({
     //   title: "Password changed",
     //   description: "Your password has been updated successfully.",
@@ -119,6 +119,7 @@ export default function SettingsPage() {
   }
 
   function onAccountSubmit(data: AccountFormValues) {
+    console.log(data)
     // toast({
     //   title: "Account preferences saved",
     //   description: "Your account preferences have been updated successfully.",
@@ -126,6 +127,7 @@ export default function SettingsPage() {
   }
 
   function onNotificationSubmit(data: NotificationFormValues) {
+    console.log(data)
     // toast({
     //   title: "Notification settings saved",
     //   description: "Your notification preferences have been updated successfully.",

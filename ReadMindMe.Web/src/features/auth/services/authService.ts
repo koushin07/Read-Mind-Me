@@ -1,9 +1,9 @@
 
 import api from "@/utils/axiosConfig";
-import { LoginResponse, LoginType, registerType } from "../types/authType";
+import { GoogleData, LoginResponse, LoginType, registerType } from "../types/authType";
 
 
-export const login = async (credential: LoginType) : Promise<LoginResponse> => {
+export const login = async (credential: LoginType): Promise<LoginResponse> => {
    const response = await api.post<LoginResponse>(`/Authentication/login`, credential)
       .then(response => response.data)
 
@@ -21,4 +21,8 @@ export const register = (form: registerType) => {
 
 export const logout = () => {
 
+}
+
+export const googleLogin = async (data: GoogleData): Promise<LoginResponse> => {
+   return api.post<LoginResponse>(`/Authentication/Oauth`, data).then(response => response.data)
 }

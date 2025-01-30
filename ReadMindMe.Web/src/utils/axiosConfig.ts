@@ -9,7 +9,7 @@ const sleep = (delay: number) => {
 
 // Create an Axios instance with a base URL and default headers
 const api = axios.create({
-    baseURL: 'http://localhost:5081/api', // Set your API base URL here
+    baseURL: '/api', // Set your API base URL here
     headers: {
         'Content-Type': 'application/json',
         // You can add other default headers here
@@ -34,9 +34,9 @@ api.interceptors.request.use(
 
 // Add a response interceptor to catch errors globally
 api.interceptors.response.use(
-    async (response) => {
+    (response) => {
         // Handle any additional error handling or transformation here
-        await sleep(2000);
+        sleep(2000);
         return response; // Return the original response if no additional transformation is needed
     }, // Forward successful responses
     (error) => {

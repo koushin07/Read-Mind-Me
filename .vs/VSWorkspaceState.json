@@ -1,0 +1,11 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\ReadMindMe.API",
+    "\\ReadMindMe.API\\Extensions",
+    "\\ReadMindMe.Application",
+    "\\ReadMindMe.Application\\Services"
+  ],
+  "SelectedNode": "\\ReadMindMe.API\\Program.cs",
+  "PreviewInSolutionExplorer": false
+}

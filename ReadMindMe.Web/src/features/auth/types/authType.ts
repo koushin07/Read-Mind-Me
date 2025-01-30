@@ -26,3 +26,9 @@ export interface AuthError {
     code: string;
     message: string;
   }
+
+export interface GoogleData {
+    name: string,
+    picture: string,
+    email: string,
+}

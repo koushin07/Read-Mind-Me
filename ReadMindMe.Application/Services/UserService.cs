@@ -3,6 +3,7 @@ using System.Text;
 using AutoMapper;
 using ReadMindMe.Application.DTOs;
 using ReadMindMe.Application.Exceptions;
+using ReadMindMe.Application.Extensions;
 using ReadMindMe.Application.Interfaces;
 using ReadMindMe.Domain.Contracts;
 using ReadMindMe.Domain.Entities;
@@ -20,6 +21,40 @@ public class UserService : IUserService
         _unitOfWork = unitOfWork;
         _mapper = mapper;
         _photoService = photoService;
+    }
+
+    public async Task FollowUser(int authId, int userId)
+    {
+        var auth = await _unitOfWork.UserRepository.GetById(authId);
+        if (auth is null) throw new BadRequestException("No authenticated User found");
+        var user = await _unitOfWork.UserRepository.GetById(userId);
+        if (user is null) throw new BadRequestException("No User Found");
+
+        var userFollow = await _unitOfWork.UserFollowRepository.GetByFollowedAndFollowerId(authId, userId);
+        if (userFollow is not null) throw new BadRequestException("User is already following this user");
+        await _unitOfWork.UserFollowRepository.Insert(new UserFollow()
+        {
+            FollowedId = userId,
+            FollowerId = authId
+        });
+        await _unitOfWork.ActivityRepository.Insert(new Activity
+        {
+            User = auth.Name,
+            Action = $"User {auth.Name} is following you",
+
+        });
+
+        await _unitOfWork.Complete();
+    }
+
+
+
+    public async Task<UserDetailDto> GetUserDetail(string slug, int userId)
+    {
+        var user = await _unitOfWork.UserRepository.GetBySlug(slug, userId);
+        if (user is null) throw new NotFoundException(slug + " not found");
+        var userDetail = _mapper.Map<UserDetailDto>(user);
+        return userDetail;
     }
 
     public async Task<UserDto> Login(UserDto userDto)
@@ -45,6 +80,30 @@ public class UserService : IUserService
 
     }
 
+    public async Task<UserDto> LoginViaGoogle(OAuthRequest auth)
+    {
+        var user = await _unitOfWork.UserRepository.GetByEmail(auth.Email);
+        if (user is not null) return _mapper.Map<UserDto>(user);
+
+        using var hmac = new HMACSHA512();
+        var password = auth.Email.Substring(0, auth.Email.IndexOf('@'));
+        var hash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
+        var salt = hmac.Key;
+        var newUser = new User
+        {
+            Email = auth.Email,
+            Name = auth.Name,
+            Slug = auth.Name.Slugify(),
+            PasswordHash = hash,
+            PasswordSalt = salt,
+            Avatar = auth.Picture,
+        };
+        var insertedUser = await _unitOfWork.UserRepository.Insert(newUser);
+        await _unitOfWork.Complete();
+        return _mapper.Map<UserDto>(insertedUser);
+
+    }
+
     public async Task Register(UserDto userDto)
     {
 
@@ -62,6 +121,8 @@ public class UserService : IUserService
             Name = userDto.Name,
             PasswordHash = hash,
             PasswordSalt = salt,
+            Slug = userDto.Name.Slugify()
+
 
         };
         await _unitOfWork.UserRepository.Insert(user);
@@ -90,6 +151,6 @@ public class UserService : IUserService
             Avatar = user.Avatar,
             Email = user.Email
         };
-
     }
+
 }

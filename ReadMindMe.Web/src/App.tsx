@@ -3,9 +3,7 @@ import "./App.css";
 import LandingPage from "./pages/Landing";
 import HomePage from "./pages/Home";
 import CommunityPage from "./pages/Community";
-import ExplorePage from "./pages/Explore";
 import MainLayout from "./layout/MainLayout";
-import MessagePage from "./pages/Message";
 import CommunityDetailPage from "./pages/CommunityDetail";
 import { useEffect } from "react";
 import RegisterPage from "./pages/Register";
@@ -17,6 +15,8 @@ import { Toaster } from "@/components/ui/sonner";
 import NotFoundPage from "./pages/NotFound";
 import AccountLayout from "./layout/AccountLayout";
 import ProfilePage from "./pages/Profile";
+import { GoogleOAuthProvider } from '@react-oauth/google';
+
 
 const router = createBrowserRouter([
   { path: "/", element: <LandingPage /> },
@@ -30,6 +30,8 @@ const router = createBrowserRouter([
       { path: "/community", element: <CommunityPage /> },
       { path: "/community/:slug", element: <CommunityDetailPage /> },
       // { path: "/explore", element: <ExplorePage /> },
+      { path: "profile/:slug", element: <ProfilePage /> },
+
     ],
   },
   {
@@ -42,9 +44,13 @@ const router = createBrowserRouter([
     ],
   },
 
-  { path: "profile", element: <ProfilePage /> },
 
-  { path: "/messages", element: <MessagePage /> },
+  // {
+  //   path: "messages", element: <MessagePage />,
+  //   children: [
+  //     { path: ":id", element: <MessageLayout /> },
+  //   ]
+  //  },
   { path: "*", element: <NotFoundPage /> },
 ]);
 function App() {
@@ -53,10 +59,12 @@ function App() {
   }, []);
   // return
   return (
+    <GoogleOAuthProvider clientId="1018879496409-o3528ll0ccrbfsukp6g147s5rn4h0nv2.apps.googleusercontent.com">
     <Provider store={store}>
       <RouterProvider router={router} />
       <Toaster closeButton position="bottom-right" />
-    </Provider>
+      </Provider>
+      </GoogleOAuthProvider>
   );
 }
 

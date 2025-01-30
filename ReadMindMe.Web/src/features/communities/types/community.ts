@@ -31,3 +31,10 @@ export type UserCommunities = {
     role: string
 }
 
+export interface JoinedCommunity{
+    id: number;
+    name: string;
+    slug: string;
+    joinedAt: string;
+}
+

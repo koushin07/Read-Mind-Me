@@ -11,6 +11,10 @@ public static class ClaimPrincipalServiceExtension
     }
     public static string GetUserEmail(this ClaimsPrincipal user)
     {
+        return user.FindFirst(ClaimTypes.Email)?.Value;
+    }
+    public static string GetUserName(this ClaimsPrincipal user)
+    {
         return user.FindFirst(ClaimTypes.Name)?.Value;
     }
 }

@@ -21,23 +21,23 @@ public class ActivityRepository : IActivityRepository
 
     public async Task<List<Activity>> GetAll()
     {
-        return await _context.activities.ToListAsync();
+        return await _context.Activities.ToListAsync();
     }
 
     public async Task<Activity> GetById(int id)
     {
-        return await _context.activities.FirstOrDefaultAsync(a => a.Id == id);
+        return await _context.Activities.FirstOrDefaultAsync(a => a.Id == id);
     }
 
     public async Task<Activity> Insert(Activity entity)
     {
-        var activity = await _context.activities.AddAsync(entity);
+        var activity = await _context.Activities.AddAsync(entity);
         return activity.Entity;
     }
 
     public Task Update(Activity entity)
     {
-        _context.activities.Update(entity);
+        _context.Activities.Update(entity);
         return Task.CompletedTask;
     }
 }

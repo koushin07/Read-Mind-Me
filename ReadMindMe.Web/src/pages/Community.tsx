@@ -15,10 +15,17 @@ import CommunityCard from "@/features/communities/components/CommunityCard";
 import CommunityForm from "@/features/communities/components/CommunityForm";
 import { useCommunity } from "@/features/communities/hooks/use-community";
 import CommunitySkeleton from "@/features/communities/components/CommunityDetailSkeleton";
+import { Community } from "@/features/communities/types/community";
 
 export default function CommunityPage() {
-  const { filteredCommunity, searchCommunity, submitCommunity, isLoading, fetchAllCommunities } =
-    useCommunity();
+  const {
+    filteredCommunity,
+    communities,
+    searchCommunity,
+    submitCommunity,
+    isLoading,
+    fetchAllCommunities,
+  } = useCommunity();
 
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -30,9 +37,11 @@ export default function CommunityPage() {
 
   const [openForm, setOpenForm] = useState(false);
   const handleToggleForm = (state: boolean) => setOpenForm(state);
+  const [myCommunity, setMyCommunity] = useState<Community[]>([]);
 
   useEffect(() => {
     fetchAllCommunities();
+    setMyCommunity(communities.filter((community) => community.isJoin));
   }, []);
 
   if (isLoading) {
@@ -77,24 +86,17 @@ export default function CommunityPage() {
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-2">
-                    <li>
-                      <Link
-                        to="#"
-                        className="flex items-center space-x-2 hover:underline"
-                      >
-                        <Users className="h-4 w-4" />
-                        <span>Christian Fellowship</span>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        to="#"
-                        className="flex items-center space-x-2 hover:underline"
-                      >
-                        <Users className="h-4 w-4" />
-                        <span>Interfaith Dialogue</span>
-                      </Link>
-                    </li>
+                    {myCommunity.map((community) => (
+                      <li>
+                        <Link
+                          to={community.slug}
+                          className="flex items-center space-x-2 hover:underline"
+                        >
+                          <Users className="h-4 w-4" />
+                          <span>{community.name}</span>
+                        </Link>
+                      </li>
+                    ))}
                   </ul>
                 </CardContent>
                 <CardFooter>

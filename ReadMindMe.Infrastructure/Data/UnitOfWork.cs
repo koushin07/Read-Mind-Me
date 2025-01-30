@@ -23,6 +23,14 @@ public class UnitOfWork : IUnitOfWork
     public IUserCommunityRepository UserCommunityRepository => new UserCommunityRepository(_context);
     public IActivityRepository ActivityRepository => new ActivityRepository(_context);
 
+    public IMessageRepository MessageRepository =>  new MessageRepository(_context);
+
+    public IConversationRepository ConversationRepository => new ConversationRepository(_context);
+
+    public IParticipantRepository ParticipantRepository => new ParticipantRepository(_context);
+
+    public IUserFollowRepository UserFollowRepository =>  new UserFollowRepository(_context);
+
     public async Task<bool> Complete()
     {
         return await _context.SaveChangesAsync() > 0;

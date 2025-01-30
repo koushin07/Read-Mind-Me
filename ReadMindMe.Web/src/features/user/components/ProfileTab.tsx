@@ -17,7 +17,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import { Loader2, User } from "lucide-react";
+import { Loader2, Upload, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 import { useEffect, useRef, useState } from "react";
@@ -64,7 +64,7 @@ export default function ProfileTab() {
       avatar: "",
       name: "",
       email: "",
-      bio: "I'm a passionate believer sharing my faith journey.",
+      bio: "",
     },
   });
   async function onProfileSubmit(data: ProfileFormValues) {
@@ -117,7 +117,7 @@ export default function ProfileTab() {
         avatar: auth.user.avatar,
         name: auth.user.name,
         email: auth.user.email,
-        bio: "I'm a passionate believer sharing my faith journey.",
+        bio: auth.user.bio,
       });
     }
   }, [auth.user, profileForm]);
@@ -143,12 +143,12 @@ export default function ProfileTab() {
                   <FormControl>
                     <div>
                       <h3 className="mb-4 text-lg font-medium">Avatar</h3>
-                      <div className="flex items-center space-x-4">
+                      <div className=" relative w-fit items-center space-x-4 ">
                         <Input
                           id="avatar-upload"
                           type="file"
                           accept="image/png, image/jpeg"
-                          className="hidden"
+                          className="hidden "
                           disabled={isLoading}
                           onChange={(e) => {
                             handleFileSelect(e);
@@ -158,7 +158,7 @@ export default function ProfileTab() {
                         />
                         <Avatar
                           onClick={handleAvatarClick}
-                          className="h-24 w-24 cursor-pointer"
+                          className="h-24 w-24 cursor-pointer hover:shadow-2xl"
                         >
                           <AvatarImage
                             src={avatarPreview || ""}
@@ -168,18 +168,22 @@ export default function ProfileTab() {
                             <User className="h-12 w-12 text-muted-foreground" />
                           </AvatarFallback>
                         </Avatar>
-
-                        <Button
-                          disabled={isLoading}
+                        <div
                           onClick={handleAvatarClick}
-                          type="button"
+                          className="absolute cursor-pointer inset-0 flex items-center justify-center bg-black/50 rounded-full opacity-0 hover:opacity-100 transition-opacity"
                         >
-                          Change Avatar
-                        </Button>
+                          <Upload className="w-8 h-8 text-white" />
+                        </div>
                       </div>
+                      <Button
+                        disabled={isLoading}
+                        onClick={handleAvatarClick}
+                        type="button"
+                      >
+                        Change Avatar
+                      </Button>
                     </div>
                   </FormControl>
-
                   <FormDescription>
                     Click on the avatar or button to select an image. Max file
                     size: 5MB.

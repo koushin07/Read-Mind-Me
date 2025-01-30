@@ -15,6 +15,6 @@ public class PostDto
     public List<PostLikeDto> LikedByUsers { get; set; }
     public List<CommentDto> Comments { get; set; }
     public CommunityDto Community { get; set; }
-
+    public DateTime CreatedAt { get; set; }
 
 }

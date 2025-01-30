@@ -15,18 +15,25 @@ import {
 } from "@/features/posts/types/postType";
 import { useState } from "react";
 import { toast } from "sonner";
+import { Community } from "@/features/communities/types/community";
+import { useDispatch } from "react-redux";
+import { setCurrentCommunity } from "@/features/communities/communitySlice";
 
 export function usePost(user: User) {
   const [isLoading, setIsLoading] = useState(true);
   const [posts, setPosts] = useState<PostResponse[]>([]);
 
+
+  const dispatch = useDispatch();
+
   const fetchPosts = () => {
     getAllPublicPost().then((res) => {
       setPosts(res);
-      console.log(posts)
+      console.log(posts);
       setIsLoading(false);
     });
   };
+
   const handlePostDelete = async (postId: number) => {
     // Find the post and its index before removing it
     const postIndex = posts.findIndex((p) => p.id === postId);
@@ -80,6 +87,7 @@ export function usePost(user: User) {
 
   const handleLike = async (postId: number) => {
     const post = posts.find((p) => p.id === postId);
+    console.log(posts);
     if (!post) return;
 
     const isCurrentlyLiked = post.isLike;
@@ -127,7 +135,57 @@ export function usePost(user: User) {
   //     post.id === postId ? { ...post, shares: post.shares + 1 } : post
   //   ))
   // }
+  const handleLikePostCommunity = async (
+    postId: number,
+    community: Community
+  ) => {
 
+
+    const postIndex = community.posts.findIndex((post) => post.id === postId);
+
+    if (postIndex === -1) return;
+
+    const post = community.posts[postIndex];
+    console.log(post);
+    const isCurrentlyLiked = post.isLike;
+
+    // Create a new post object with updated properties
+    const updatedPost = {
+      ...post,
+      likes: post.likes + (isCurrentlyLiked ?  -1 : 1),
+      isLike: !isCurrentlyLiked,
+    };
+
+    // Create a new array of posts with the updated post
+    const updatedPosts = [
+      ...community.posts.slice(0, postIndex),
+      updatedPost,
+      ...community.posts.slice(postIndex + 1),
+    ];
+
+    // Dispatch the action to update the state with the new array of posts
+    dispatch(setCurrentCommunity({...community, posts: updatedPosts}));
+    try {
+      if (isCurrentlyLiked) {
+        // Unlike request
+        await unlikePost(postId);
+      } else {
+        // Like request
+        await likePost(postId);
+      }
+    } catch (err: unknown) {
+      console.log(err);
+      // Revert state if request fails
+      dispatch(setCurrentCommunity({
+        ...community,
+        posts: community.posts.map((p) =>
+          p.id === postId
+            ? { ...p, likes: p.likes + (isCurrentlyLiked ? 1 : -1), isLike: isCurrentlyLiked }
+            : p
+        ),
+      }));
+    }
+  };
   const SubmitPost = async (postData: CreatePost) => {
     if (!postData.content.trim()) {
       toast.error("Error creating post", {
@@ -203,5 +261,6 @@ export function usePost(user: User) {
     fetchPosts,
     fetchTrendingPosts,
     // handleShare,
+    handleLikePostCommunity,
   };
 }

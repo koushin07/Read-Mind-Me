@@ -23,7 +23,8 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<MyDbContext>(opt =>
 {
-    opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+    opt.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
+
 });
 builder.Services.AddCors(options =>
 {
@@ -64,7 +65,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                         // If the request is for our hub...
                         var path = context.HttpContext.Request.Path;
                         if (!string.IsNullOrEmpty(accessToken) &&
-                            (path.StartsWithSegments("/hubs")))
+                            path.StartsWithSegments("/hubs"))
                         {
                             // Read the token out of the query string
                             context.Token = accessToken;
@@ -72,7 +73,8 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                         return Task.CompletedTask;
                     }
                 };
-            });
+            })
+            ;
 
 var app = builder.Build();
 app.UseMiddleware<ExceptionMiddleware>();
@@ -83,12 +85,22 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    app.ApplyMigration();
 }
 app.UseCors("CorsPolicy");
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseDefaultFiles();
+app.UseStaticFiles();
+
 app.MapControllers();
 
 app.MapHub<PresenceHub>("hubs/presence");
+app.MapHub<MessagesHub>("hubs/messages");
+app.MapHub<NotificationHub>("hubs/notifications");
+
+app.MapFallbackToController("Index", "Fallback");
+
 app.Run();
