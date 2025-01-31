@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "HbQEGTm/MYzE/3xr0XpRp32/xpqbgYPH2HVZApdvqkA=",
+  "Hash": "zZ+AVs59nEDmWrqW226mWTT2BnD/JOVqN5WjjeVPHt0=",
   "Source": "ReadMindMe.API",
   "BasePath": "_content/ReadMindMe.API",
   "Mode": "Default",
@@ -16,6 +16,25 @@
     }
   ],
   "Assets": [
+    {
+      "Identity": "C:\\Users\\canar\\OneDrive\\Documents\\DotNet\\ReadMindMe\\ReadMindMe.API\\wwwroot\\assets\\index-B_iGL3Ho.css",
+      "SourceId": "ReadMindMe.API",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\canar\\OneDrive\\Documents\\DotNet\\ReadMindMe\\ReadMindMe.API\\wwwroot\\",
+      "BasePath": "_content/ReadMindMe.API",
+      "RelativePath": "assets/index-B_iGL3Ho.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\index-B_iGL3Ho.css"
+    },
     {
       "Identity": "C:\\Users\\canar\\OneDrive\\Documents\\DotNet\\ReadMindMe\\ReadMindMe.API\\wwwroot\\assets\\index-C8L1HvWp.js",
       "SourceId": "ReadMindMe.API",
@@ -55,6 +74,25 @@
       "OriginalItemSpec": "wwwroot\\assets\\index-CDoRbH8E.css"
     },
     {
+      "Identity": "C:\\Users\\canar\\OneDrive\\Documents\\DotNet\\ReadMindMe\\ReadMindMe.API\\wwwroot\\assets\\index-i-mUGkzS.js",
+      "SourceId": "ReadMindMe.API",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\canar\\OneDrive\\Documents\\DotNet\\ReadMindMe\\ReadMindMe.API\\wwwroot\\",
+      "BasePath": "_content/ReadMindMe.API",
+      "RelativePath": "assets/index-i-mUGkzS.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\index-i-mUGkzS.js"
+    },
+    {
       "Identity": "C:\\Users\\canar\\OneDrive\\Documents\\DotNet\\ReadMindMe\\ReadMindMe.API\\wwwroot\\index.html",
       "SourceId": "ReadMindMe.API",
       "SourceType": "Discovered",
@@ -74,6 +112,25 @@
       "OriginalItemSpec": "wwwroot\\index.html"
     },
     {
+      "Identity": "C:\\Users\\canar\\OneDrive\\Documents\\DotNet\\ReadMindMe\\ReadMindMe.API\\wwwroot\\login.jpg",
+      "SourceId": "ReadMindMe.API",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\canar\\OneDrive\\Documents\\DotNet\\ReadMindMe\\ReadMindMe.API\\wwwroot\\",
+      "BasePath": "_content/ReadMindMe.API",
+      "RelativePath": "login.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\login.jpg"
+    },
+    {
       "Identity": "C:\\Users\\canar\\OneDrive\\Documents\\DotNet\\ReadMindMe\\ReadMindMe.API\\wwwroot\\vite.svg",
       "SourceId": "ReadMindMe.API",
       "SourceType": "Discovered",
@@ -91,6 +148,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\vite.svg"
+    },
+    {
+      "Identity": "C:\\Users\\canar\\OneDrive\\Documents\\DotNet\\ReadMindMe\\ReadMindMe.API\\wwwroot\\why-readmindme.jpg",
+      "SourceId": "ReadMindMe.API",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\canar\\OneDrive\\Documents\\DotNet\\ReadMindMe\\ReadMindMe.API\\wwwroot\\",
+      "BasePath": "_content/ReadMindMe.API",
+      "RelativePath": "why-readmindme.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\why-readmindme.jpg"
     }
   ]
 }

@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ReadMindMe.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b6060d5a4749cb6b1f738c341eadb4a027d4fa85")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6c027e604361f39c7a05fee82264128fe3be493f")]
 [assembly: System.Reflection.AssemblyProductAttribute("ReadMindMe.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ReadMindMe.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

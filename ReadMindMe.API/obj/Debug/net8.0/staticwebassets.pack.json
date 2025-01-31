@@ -1,6 +1,10 @@
 {
   "Files": [
     {
+      "Id": "C:\\Users\\canar\\OneDrive\\Documents\\DotNet\\ReadMindMe\\ReadMindMe.API\\wwwroot\\assets\\index-B_iGL3Ho.css",
+      "PackagePath": "staticwebassets\\assets\\index-B_iGL3Ho.css"
+    },
+    {
       "Id": "C:\\Users\\canar\\OneDrive\\Documents\\DotNet\\ReadMindMe\\ReadMindMe.API\\wwwroot\\assets\\index-C8L1HvWp.js",
       "PackagePath": "staticwebassets\\assets\\index-C8L1HvWp.js"
     },
@@ -9,12 +13,24 @@
       "PackagePath": "staticwebassets\\assets\\index-CDoRbH8E.css"
     },
     {
+      "Id": "C:\\Users\\canar\\OneDrive\\Documents\\DotNet\\ReadMindMe\\ReadMindMe.API\\wwwroot\\assets\\index-i-mUGkzS.js",
+      "PackagePath": "staticwebassets\\assets\\index-i-mUGkzS.js"
+    },
+    {
       "Id": "C:\\Users\\canar\\OneDrive\\Documents\\DotNet\\ReadMindMe\\ReadMindMe.API\\wwwroot\\index.html",
       "PackagePath": "staticwebassets\\index.html"
     },
     {
+      "Id": "C:\\Users\\canar\\OneDrive\\Documents\\DotNet\\ReadMindMe\\ReadMindMe.API\\wwwroot\\login.jpg",
+      "PackagePath": "staticwebassets\\login.jpg"
+    },
+    {
       "Id": "C:\\Users\\canar\\OneDrive\\Documents\\DotNet\\ReadMindMe\\ReadMindMe.API\\wwwroot\\vite.svg",
       "PackagePath": "staticwebassets\\vite.svg"
+    },
+    {
+      "Id": "C:\\Users\\canar\\OneDrive\\Documents\\DotNet\\ReadMindMe\\ReadMindMe.API\\wwwroot\\why-readmindme.jpg",
+      "PackagePath": "staticwebassets\\why-readmindme.jpg"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.ReadMindMe.API.Microsoft.AspNetCore.StaticWebAssets.props",

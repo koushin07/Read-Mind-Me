@@ -3,28 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\canar\\OneDrive\\Documents\\DotNet\\ReadMindMe\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\canar\\OneDrive\\Documents\\DotNet\\ReadMindMe\\ReadMindMe.API\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:ReadMindMe.API\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A9020982-EFCC-3858-3AFA-A74EC0931490}|ReadMindMe.API\\ReadMindMe.API.csproj|c:\\users\\canar\\onedrive\\documents\\dotnet\\readmindme\\readmindme.api\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A9020982-EFCC-3858-3AFA-A74EC0931490}|ReadMindMe.API\\ReadMindMe.API.csproj|solutionrelative:readmindme.api\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\canar\\OneDrive\\Documents\\DotNet\\ReadMindMe\\ReadMindMe.Application\\Services\\MessageService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:ReadMindMe.Application\\Services\\MessageService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A9020982-EFCC-3858-3AFA-A74EC0931490}|ReadMindMe.API\\ReadMindMe.API.csproj|c:\\users\\canar\\onedrive\\documents\\dotnet\\readmindme\\readmindme.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A9020982-EFCC-3858-3AFA-A74EC0931490}|ReadMindMe.API\\ReadMindMe.API.csproj|solutionrelative:readmindme.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\canar\\OneDrive\\Documents\\DotNet\\ReadMindMe\\ReadMindMe.Infrastructure\\Data\\MyDbContext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:ReadMindMe.Infrastructure\\Data\\MyDbContext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6262A4B1-F11D-B796-FE3F-75B5BB7B92DB}|ReadMindMe.Application\\ReadMindMe.Application.csproj|c:\\users\\canar\\onedrive\\documents\\dotnet\\readmindme\\readmindme.application\\services\\messageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6262A4B1-F11D-B796-FE3F-75B5BB7B92DB}|ReadMindMe.Application\\ReadMindMe.Application.csproj|solutionrelative:readmindme.application\\services\\messageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\canar\\OneDrive\\Documents\\DotNet\\ReadMindMe\\docker-compose.yml||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:docker-compose.yml||{8B382828-6202-11D1-8870-0000F87579D2}"
+      "AbsoluteMoniker": "D:0:0:{7526EE50-77D7-1F7C-15A1-F1B025E04C97}|ReadMindMe.Infrastructure\\ReadMindMe.Infrastructure.csproj|c:\\users\\canar\\onedrive\\documents\\dotnet\\readmindme\\readmindme.infrastructure\\data\\mydbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7526EE50-77D7-1F7C-15A1-F1B025E04C97}|ReadMindMe.Infrastructure\\ReadMindMe.Infrastructure.csproj|solutionrelative:readmindme.infrastructure\\data\\mydbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\canar\\OneDrive\\Documents\\DotNet\\ReadMindMe\\ReadMindMe.API\\Extensions\\RunAnyMigration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:ReadMindMe.API\\Extensions\\RunAnyMigration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2E2367FF-F1F9-4B74-B384-A4EBA4095EE2}|docker-compose.dcproj|c:\\users\\canar\\onedrive\\documents\\dotnet\\readmindme\\docker-compose.yml||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{2E2367FF-F1F9-4B74-B384-A4EBA4095EE2}|docker-compose.dcproj|solutionrelative:docker-compose.yml||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\canar\\OneDrive\\Documents\\DotNet\\ReadMindMe\\ReadMindMe.API\\Dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:ReadMindMe.API\\Dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}"
+      "AbsoluteMoniker": "D:0:0:{A9020982-EFCC-3858-3AFA-A74EC0931490}|ReadMindMe.API\\ReadMindMe.API.csproj|c:\\users\\canar\\onedrive\\documents\\dotnet\\readmindme\\readmindme.api\\extensions\\runanymigration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A9020982-EFCC-3858-3AFA-A74EC0931490}|ReadMindMe.API\\ReadMindMe.API.csproj|solutionrelative:readmindme.api\\extensions\\runanymigration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 17,
+          "SelectedChildIndex": 18,
           "Children": [
             {
               "$type": "Bookmark",
@@ -90,7 +90,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "MessageService.cs",
               "DocumentMoniker": "C:\\Users\\canar\\OneDrive\\Documents\\DotNet\\ReadMindMe\\ReadMindMe.Application\\Services\\MessageService.cs",
               "RelativeDocumentMoniker": "ReadMindMe.Application\\Services\\MessageService.cs",
@@ -102,7 +102,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "MyDbContext.cs",
               "DocumentMoniker": "C:\\Users\\canar\\OneDrive\\Documents\\DotNet\\ReadMindMe\\ReadMindMe.Infrastructure\\Data\\MyDbContext.cs",
               "RelativeDocumentMoniker": "ReadMindMe.Infrastructure\\Data\\MyDbContext.cs",
@@ -114,7 +114,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "docker-compose.yml",
               "DocumentMoniker": "C:\\Users\\canar\\OneDrive\\Documents\\DotNet\\ReadMindMe\\docker-compose.yml",
               "RelativeDocumentMoniker": "docker-compose.yml",
@@ -126,7 +126,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "RunAnyMigration.cs",
               "DocumentMoniker": "C:\\Users\\canar\\OneDrive\\Documents\\DotNet\\ReadMindMe\\ReadMindMe.API\\Extensions\\RunAnyMigration.cs",
               "RelativeDocumentMoniker": "ReadMindMe.API\\Extensions\\RunAnyMigration.cs",
@@ -138,28 +138,29 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\canar\\OneDrive\\Documents\\DotNet\\ReadMindMe\\ReadMindMe.API\\Program.cs",
               "RelativeDocumentMoniker": "ReadMindMe.API\\Program.cs",
               "ToolTip": "C:\\Users\\canar\\OneDrive\\Documents\\DotNet\\ReadMindMe\\ReadMindMe.API\\Program.cs",
               "RelativeToolTip": "ReadMindMe.API\\Program.cs",
-              "ViewState": "AQIAABcAAAAAAAAAAADwvyUAAAADAAAA",
+              "ViewState": "AQIAAAgAAAAAAAAAAADwvyYAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-29T09:57:23.824Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 0,
               "Title": "Dockerfile",
               "DocumentMoniker": "C:\\Users\\canar\\OneDrive\\Documents\\DotNet\\ReadMindMe\\ReadMindMe.API\\Dockerfile",
               "RelativeDocumentMoniker": "ReadMindMe.API\\Dockerfile",
               "ToolTip": "C:\\Users\\canar\\OneDrive\\Documents\\DotNet\\ReadMindMe\\ReadMindMe.API\\Dockerfile",
               "RelativeToolTip": "ReadMindMe.API\\Dockerfile",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAAkAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAAfAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-01-29T09:41:57.404Z"
+              "WhenOpened": "2025-01-29T09:41:57.404Z",
+              "EditorCaption": ""
             }
           ]
         },
