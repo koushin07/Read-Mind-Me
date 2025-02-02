@@ -1,0 +1,7 @@
+./ReadMindMe.Tests/obj
+./ReadMindMe.Application/obj
+./ReadMindMe.Domain/obk
+./ReadMindMe.Infrastructure/obj
+./ReadMindMe.Api/obj
+.vscode
+.vscode
