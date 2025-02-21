@@ -137,14 +137,14 @@ export default function SettingsPage() {
   return (
     <div>
 
-      <div className="container mx-auto p-24">
-        <h1 className="text-3xl font-bold mb-6">Settings</h1>
+      <div className="container mx-auto px-24 shadow border">
+        {/* <h1 className="text-3xl font-bold mb-6">Settings</h1> */}
         <Tabs defaultValue="profile" className="space-y-4">
           <TabsList>
-            <TabsTrigger value="profile">Profile</TabsTrigger>
-            <TabsTrigger value="account">Account</TabsTrigger>
+            {/* <TabsTrigger value="profile">Profile</TabsTrigger> */}
+            {/* <TabsTrigger value="account">Account</TabsTrigger>
             <TabsTrigger value="security">Security</TabsTrigger>
-            <TabsTrigger value="notifications">Notifications</TabsTrigger>
+            <TabsTrigger value="notifications">Notifications</TabsTrigger> */}
           </TabsList>
           <TabsContent value="profile">
            <ProfileTab/>

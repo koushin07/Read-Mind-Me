@@ -85,7 +85,7 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
-    
+
 }
 app.ApplyMigration();
 app.UseCors("CorsPolicy");
@@ -99,7 +99,8 @@ app.UseStaticFiles();
 app.MapControllers();
 
 app.MapHub<PresenceHub>("hubs/presence");
-app.MapHub<MessagesHub>("hubs/messages");
+app.MapHub<MessagesHub>("hubs/message");
+app.MapHub<ConversationHub>("hubs/conversations");
 app.MapHub<NotificationHub>("hubs/notifications");
 
 app.MapFallbackToController("Index", "Fallback");

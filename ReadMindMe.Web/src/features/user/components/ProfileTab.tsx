@@ -124,7 +124,7 @@ export default function ProfileTab() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Profile Settings {auth.user.name}</CardTitle>
+        <CardTitle>Profile Settings</CardTitle>
         <CardDescription>
           Manage your public profile information
         </CardDescription>
@@ -175,13 +175,16 @@ export default function ProfileTab() {
                           <Upload className="w-8 h-8 text-white" />
                         </div>
                       </div>
-                      <Button
-                        disabled={isLoading}
-                        onClick={handleAvatarClick}
-                        type="button"
-                      >
-                        Change Avatar
-                      </Button>
+                      <div className="pl-2 pt-2">
+                        <Button
+                          disabled={isLoading}
+                          onClick={handleAvatarClick}
+                          type="button"
+                          size={"sm"}
+                        >
+                          Change Avatar
+                        </Button>
+                      </div>
                     </div>
                   </FormControl>
                   <FormDescription>

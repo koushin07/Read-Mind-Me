@@ -1,27 +1,28 @@
-
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using AutoMapper;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.SignalR;
-using ReadMindMe.API.Models;
-using ReadMindMe.Application.DTOs;
-using ReadMindMe.Application.Extensions;
 using ReadMindMe.Application.Interfaces;
-using ReadMindMe.Domain.Entities;
 
 namespace ReadMindMe.API.SignalR;
-[Authorize]
-public class MessagesHub : Hub
+
+public class ConversationHub : Hub
 {
-    private readonly IMessagesService _messagesService;
+     private readonly IMessagesService _messagesService;
     private readonly IMapper _mapper;
 
-    public MessagesHub(IMessagesService messagesService, IMapper mapper)
+    public ConversationHub(IMessagesService messagesService, IMapper mapper)
     {
         _messagesService = messagesService;
         _mapper = mapper;
     }
 
-
+    public override Task OnConnectedAsync()
+    {
+        return base.OnConnectedAsync();
+    }
     public async Task SendMessage(int conversationId, int senderId, string content)
     {
         //process message
@@ -32,7 +33,4 @@ public class MessagesHub : Hub
         // update conversation list
         await Clients.All.SendAsync("UpdateConversationList", conversationId, content);
     }
-
-
 }
-

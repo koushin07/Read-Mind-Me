@@ -128,7 +128,7 @@ export default function CommunityPage() {
                   </ul>
                 </CardContent>
               </Card>
-              <Card>
+              {/* <Card>
                 <CardHeader>
                   <CardTitle>Trending Topics</CardTitle>
                 </CardHeader>
@@ -163,7 +163,7 @@ export default function CommunityPage() {
                     </li>
                   </ul>
                 </CardContent>
-              </Card>
+              </Card> */}
             </div>
           </div>
         </main>

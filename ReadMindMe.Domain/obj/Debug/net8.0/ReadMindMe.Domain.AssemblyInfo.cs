@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ReadMindMe.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+46180fd12dabb7e81df68ba7d7fb1e1dff5674ea")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a03f7fc7bdb5cadc554d33f67fde4dbb1678e523")]
 [assembly: System.Reflection.AssemblyProductAttribute("ReadMindMe.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ReadMindMe.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

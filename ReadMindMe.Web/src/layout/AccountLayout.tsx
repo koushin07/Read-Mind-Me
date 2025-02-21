@@ -6,7 +6,7 @@ export default function AccountLayout() {
 
   return (
     <div>
-      {" "}
+
       <Navigation />
      <Outlet/>
     </div>

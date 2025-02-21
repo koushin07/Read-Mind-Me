@@ -69,12 +69,7 @@ public class UserService : IUserService
 
         var passwordCheck = user.PasswordHash.SequenceEqual(computedHash);
         if (!passwordCheck) throw new BadRequestException("wrong password");
-        // return new AuthenticatedDto()
-        // {
-        //     Token = _tokenService.CreateToken(user),
-        //     User = _mapper.Map<UserDto>(user)
 
-        // };
         return _mapper.Map<UserDto>(user);
 
 

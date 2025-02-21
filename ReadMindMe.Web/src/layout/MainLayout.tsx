@@ -7,6 +7,8 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/store/store";
 import UnauthorizePage from "@/pages/Unauthorize";
 import { useEffect } from "react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { useAuth } from "@/features/auth/hooks/use-auth";
 
 const navlinks = [
   {
@@ -34,21 +36,31 @@ const navlinks = [
 function MainLayout() {
   const { isLoggedin } = useSelector((state: RootState) => state.auth);
   const token = localStorage.getItem("token");
-
+  const { auth } = useAuth();
   console.log("first run");
-  useEffect(() => {
-
-  }, []);
+  useEffect(() => {}, []);
   if (!isLoggedin && token == null) return <UnauthorizePage />;
   return (
     <div className="min-h-screen font-karla bg-[#F5F2EE] dark:bg-gray-900">
       <Navigation />
+
       {/* <Button onClick={() =>invoking}>Invoking</Button> */}
-      <div className="container mx-auto px-4 py-8 flex flex-col md:flex-row gap-8">
+      <div className=" container mx-auto px-4 py-8 flex flex-col md:flex-row gap-8">
         <aside className="hidden w-64 flex-col md:flex">
-          <nav className=" space-y-2">
+          <div className="">
+            <div className="flex flex-col items-center">
+              <Avatar className="w-24 h-24">
+                <AvatarImage src={auth.user.avatar} />
+                <AvatarFallback>{auth.user.name && auth.user.name[0]}</AvatarFallback>
+              </Avatar>
+              <h1 className="capitalize text-center mt-4 text-xl font-semibold">
+                {auth.user.name}
+              </h1>
+            </div>
+          </div>
+          <nav className="flex flex-col justify-evenly pt-10">
             {navlinks.map((link) => (
-              <NavLink to={link.path} key={link.path}>
+              <NavLink className="" to={link.path} key={link.path}>
                 {({ isActive }) => (
                   <Button
                     variant="ghost"

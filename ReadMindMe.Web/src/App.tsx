@@ -16,6 +16,8 @@ import NotFoundPage from "./pages/NotFound";
 import AccountLayout from "./layout/AccountLayout";
 import ProfilePage from "./pages/Profile";
 import { GoogleOAuthProvider } from '@react-oauth/google';
+// import MessageLayout from "./pages/Message";
+// import MessagePage from "./layout/MessageLayout";
 
 
 const router = createBrowserRouter([
@@ -45,12 +47,7 @@ const router = createBrowserRouter([
   },
 
 
-  // {
-  //   path: "messages", element: <MessagePage />,
-  //   children: [
-  //     { path: ":id", element: <MessageLayout /> },
-  //   ]
-  //  },
+
   { path: "*", element: <NotFoundPage /> },
 ]);
 function App() {

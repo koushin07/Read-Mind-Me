@@ -19,7 +19,7 @@ import { useAuth } from "@/features/auth/hooks/use-auth";
 import { useMessageHub } from "@/hooks/use-message-hub";
 import { useParams } from "react-router-dom";
 
-const MessageLayout = () => {
+const MessagePage = () => {
   const { id } = useParams();
   const { fetchById, sendMessage, JoinConversationGroup } = useMessageHub();
   const { auth } = useAuth();
@@ -178,4 +178,4 @@ const MessageLayout = () => {
   );
 };
 
-export default MessageLayout;
+export default MessagePage;

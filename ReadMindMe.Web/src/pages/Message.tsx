@@ -1,19 +1,26 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { MessageCirclePlus, Search } from "lucide-react";
 import Navigation from "@/components/navigation";
-import { ConversationList } from "@/features/messages/types/conversationTypes";
 import { NavLink, Outlet, useMatch } from "react-router-dom";
-import { useMessageHub } from "@/hooks/use-message-hub";
+import { useEffect, useState } from "react";
+import { fetchConversations } from "@/features/messages/service/message-service";
+import { useDispatch, useSelector } from "react-redux";
+import { loadConversation } from "@/features/messages/messageSlice";
+import { RootState } from "@/store/store";
+import { ConversationList } from "@/features/messages/types/conversationTypes";
+import { useAuth } from "@/features/auth/hooks/use-auth";
+import { HubConnectionBuilder } from "@microsoft/signalr";
+import { setConnection } from "@/features/messages/messageHubSlice";
 
-export default function MessagePage() {
-  const { fetchAll } = useMessageHub();
-  const [conversations] = useState<ConversationList[]>([]);
+export default function MessageLayout() {
+  const dispatch = useDispatch();
+  const conversations = useSelector((state: RootState) => state.message);
   const [searchQuery, setSearchQuery] = useState("");
+  const {auth} = useAuth()
   const [filteredConversations, setFilteredConversations] = useState<
     ConversationList[]
   >([]);
@@ -28,9 +35,19 @@ export default function MessagePage() {
       )
     );
   };
-
   useEffect(() => {
-    fetchAll().then((response) => setFilteredConversations(response));
+    // Fetch conversations on mount
+    fetchConversations().then((convo) => {
+      const connect = new HubConnectionBuilder()
+        .withUrl("http://localhost:5081/hubs/conversations", {
+          accessTokenFactory: () => auth.token!,
+        })
+        .withAutomaticReconnect()
+        .build();
+      connect.start().then(()=>dispatch(setConnection(connect)))
+      dispatch(loadConversation(convo));
+      setFilteredConversations(convo);
+    });
   }, []);
 
   return (

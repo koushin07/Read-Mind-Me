@@ -11,11 +11,12 @@ import {
 } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { MessageSquare, User, UserCheck, UserX } from "lucide-react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useUser } from "@/features/user/hooks/use-user";
 import moment from "moment";
-
-
+import { useAuth } from "@/features/auth/hooks/use-auth";
+import { createConversation } from "@/features/messages/types/conversationTypes";
+import { postConversation } from "@/features/messages/service/message-service";
 
 interface Activity {
   id: number;
@@ -26,6 +27,8 @@ interface Activity {
 
 export default function ProfilePage() {
   const { slug } = useParams();
+  const { auth } = useAuth();
+  const navigate =useNavigate()
   const { getUserBySlug, userSlug, followUser, unFollowUser } = useUser();
   useEffect(() => {
     if (slug) {
@@ -66,7 +69,7 @@ export default function ProfilePage() {
   //       creatorId: auth.user.id,
   //       participantsId: [userSlug!.id],
   //     } as createConversation;
-  //     console.log(newConvo)
+  //     console.log(newConvo);
   //     const convoId = await postConversation(newConvo);
   //     if (convoId) navigate(convoId);
   //   } catch (err) {
@@ -110,7 +113,7 @@ export default function ProfilePage() {
                 Unfollow
               </Button>
             ) : (
-              <Button onClick={followUser} >
+              <Button onClick={followUser} variant="outline">
                 <UserCheck className="mr-2 h-4 w-4" />
                 Follow
               </Button>

@@ -11,7 +11,7 @@ export const usePresence = (token: string) => {
   // Create the SignalR connection
   const createConnection = () => {
     const newConnection = new HubConnectionBuilder()
-      .withUrl("/hubs/presence", {
+      .withUrl("http://localhost:5081/hubs/presence", {
         accessTokenFactory: () => token, // Add auth token if needed
       })
       .withAutomaticReconnect()

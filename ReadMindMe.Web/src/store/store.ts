@@ -2,12 +2,17 @@ import { configureStore } from '@reduxjs/toolkit'
 import authReducer from '@/features/auth/authSlice'
 import communityReducer from '@/features/communities/communitySlice'
 import presenceReducer from '@/shared/presenceSlice'
+import messageReducer from '@/features/messages/messageSlice'
+
+import messageHubReducer from '@/features/messages/messageHubSlice'
 
 const store = configureStore({
     reducer: {
         auth: authReducer,
         communities: communityReducer,
-        presence: presenceReducer
+        presence: presenceReducer,
+        message: messageReducer,
+        messageHub: messageHubReducer
     }
 })
 

@@ -31,6 +31,7 @@ import { usePresence } from "@/hooks/use-presence";
 import { setLogin } from "@/features/auth/authSlice";
 
 function Navigation() {
+  const { auth} = useAuth()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { handleLogout } = useAuth();
   const dispatch = useDispatch();
@@ -155,10 +156,10 @@ function Navigation() {
 
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" size="icon">
-              <Avatar className="h-5 w-5">
-                <AvatarImage src="/placeholder.svg" alt="User" />
-                <AvatarFallback>U</AvatarFallback>
+            <Button variant="ghost"  size="icon">
+              <Avatar className="h-8 w-8">
+                <AvatarImage className="rounded-full" src={auth.user.avatar} alt="User" />
+                <AvatarFallback>{auth.user.name && auth.user.name[0]} </AvatarFallback>
               </Avatar>
             </Button>
           </DropdownMenuTrigger>
