@@ -58,7 +58,7 @@ export default function SearchPage() {
     <div className="container mx-auto py-6">
       <div className="flex gap-6">
         {/* Filters Sidebar - Fixed */}
-        <div className="w-64 bg-white flex-shrink-0 sticky top-6 self-start max-h-[calc(100vh-3rem)]">
+        <div className="w-64 flex-shrink-0 sticky top-6 self-start max-h-[calc(100vh-3rem)]">
           <h2 className="text-lg font-semibold mb-4">Filters</h2>
           <div className="space-y-4 ">
             {filters.map((filter) => (
