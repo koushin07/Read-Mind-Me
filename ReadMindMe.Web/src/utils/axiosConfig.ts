@@ -12,7 +12,7 @@ const api = axios.create({
     baseURL: '/api', // Set your API base URL here
     headers: {
         'Content-Type': 'application/json',
-        // You can add other default headers here
+        // You can add other default headers heres
     },
 });
 
