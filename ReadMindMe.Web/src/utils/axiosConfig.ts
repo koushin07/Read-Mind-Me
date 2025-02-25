@@ -9,7 +9,7 @@ const sleep = (delay: number) => {
 
 // Create an Axios instance with a base URL and default headers
 const api = axios.create({
-    baseURL: 'http://localhost:5081/api', // Set your API base URL here
+    baseURL: '/api', // Set your API base URL here
     headers: {
         'Content-Type': 'application/json',
         // You can add other default headers here
