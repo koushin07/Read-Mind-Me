@@ -108,6 +108,17 @@ public class PostController : ControllerBase
         await _postService.DeletePost(id, userId);
         return Ok();
     }
+    [HttpGet("trending")]
+    public async Task<ActionResult<PostResponse>> TrendingPosts()
+    {
+        var userId = User.GetUserId();
 
+        if (userId < 0)
+        {
+            return BadRequest(" no user ID");
+        }
+        var posts = await _postService.GetPostTrending();
+        return Ok(posts.Select(p => _mapper.Map<PostResponse>(p, opt => opt.Items["userId"] = userId)).ToList());
+    }
 
 }

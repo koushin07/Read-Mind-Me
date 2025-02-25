@@ -18,11 +18,12 @@ import { toast } from "sonner";
 import { Community } from "@/features/communities/types/community";
 import { useDispatch } from "react-redux";
 import { setCurrentCommunity } from "@/features/communities/communitySlice";
+import { Filter } from "bad-words";
 
 export function usePost(user: User) {
   const [isLoading, setIsLoading] = useState(true);
   const [posts, setPosts] = useState<PostResponse[]>([]);
-
+  const filter = new Filter();
 
   const dispatch = useDispatch();
 
@@ -55,6 +56,10 @@ export function usePost(user: User) {
   };
 
   const handleUpdatePost = async (data: EditPost) => {
+    if (filter.isProfane(data.content)) {
+      toast.error("Content contains inappropriate words");
+      return;
+    }
     const post = posts.find((p) => p.id === data.id);
     setPosts((prev) =>
       prev.map((p) => {
@@ -139,8 +144,6 @@ export function usePost(user: User) {
     postId: number,
     community: Community
   ) => {
-
-
     const postIndex = community.posts.findIndex((post) => post.id === postId);
 
     if (postIndex === -1) return;
@@ -152,7 +155,7 @@ export function usePost(user: User) {
     // Create a new post object with updated properties
     const updatedPost = {
       ...post,
-      likes: post.likes + (isCurrentlyLiked ?  -1 : 1),
+      likes: post.likes + (isCurrentlyLiked ? -1 : 1),
       isLike: !isCurrentlyLiked,
     };
 
@@ -164,7 +167,7 @@ export function usePost(user: User) {
     ];
 
     // Dispatch the action to update the state with the new array of posts
-    dispatch(setCurrentCommunity({...community, posts: updatedPosts}));
+    dispatch(setCurrentCommunity({ ...community, posts: updatedPosts }));
     try {
       if (isCurrentlyLiked) {
         // Unlike request
@@ -176,20 +179,32 @@ export function usePost(user: User) {
     } catch (err: unknown) {
       console.log(err);
       // Revert state if request fails
-      dispatch(setCurrentCommunity({
-        ...community,
-        posts: community.posts.map((p) =>
-          p.id === postId
-            ? { ...p, likes: p.likes + (isCurrentlyLiked ? 1 : -1), isLike: isCurrentlyLiked }
-            : p
-        ),
-      }));
+      dispatch(
+        setCurrentCommunity({
+          ...community,
+          posts: community.posts.map((p) =>
+            p.id === postId
+              ? {
+                  ...p,
+                  likes: p.likes + (isCurrentlyLiked ? 1 : -1),
+                  isLike: isCurrentlyLiked,
+                }
+              : p
+          ),
+        })
+      );
     }
   };
   const SubmitPost = async (postData: CreatePost) => {
     if (!postData.content.trim()) {
       toast.error("Error creating post", {
         description: "Post content cannot be empty.",
+      });
+      return;
+    }
+    if (filter.isProfane(postData.content)) {
+      toast.error("Error creating post", {
+        description: "Profanity is not allowed in the post content.",
       });
       return;
     }

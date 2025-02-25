@@ -7,4 +7,6 @@ public class ActivityDto
     public string Action { get; set; }
     public string User { get; set; }
     public CommunityDto Community { get; set; }
+
+    public DateTime CreatedAt { get; set; }
 }

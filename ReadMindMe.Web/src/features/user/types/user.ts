@@ -1,5 +1,5 @@
-import { JoinedCommunity } from "@/features/communities/types/community";
-import { PostActivity } from "@/features/posts/types/postType";
+import { Community, JoinedCommunity } from "@/features/communities/types/community";
+import { PostActivity, PostResponse } from "@/features/posts/types/postType";
 
 export interface User {
     id: number;
@@ -36,3 +36,8 @@ export interface UserDetail {
     createdAt: string;
 }
 
+export interface SearchResult {
+    posts: PostResponse[]
+    users: User[]
+    communities: Community[];
+}

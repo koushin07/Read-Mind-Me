@@ -15,7 +15,7 @@ import { useAuth } from "@/features/auth/hooks/use-auth";
 export default function ExplorePage() {
   const {auth} =useAuth()
   const {fetchTrendingPosts} =usePost(auth.user)
-  const [trendingPosts, setTrendingPosts] = useState<PostResponse[]>()
+  const [trendingPosts, setTrendingPosts] = useState<PostResponse[]>([])
   const [trendingTopics] = useState<trending[]>([
     { id: 1, name: "Interfaith Dialogue", posts: 1250 },
     { id: 2, name: "Meditation Practices", posts: 980 },
@@ -27,6 +27,8 @@ export default function ExplorePage() {
   useEffect(() => {
     fetchTrendingPosts().then(res => {
       setTrendingPosts(res);
+      console.log(res)
+      console.log("fetched")
     });
   },[])
 
@@ -117,7 +119,7 @@ export default function ExplorePage() {
             <TabsTrigger value="people">People</TabsTrigger>
           </TabsList>
           <TabsContent value="trending">
-            <TrendingTab onLike={handleLike} trendings={trendingPosts!} />
+            <TrendingTab onLike={handleLike} trendings={trendingPosts} />
           </TabsContent>
           <TabsContent value="topics">
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">

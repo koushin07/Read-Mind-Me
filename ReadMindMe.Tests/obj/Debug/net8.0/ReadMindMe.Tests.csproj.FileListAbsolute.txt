@@ -161,3 +161,5 @@ C:\Users\canar\OneDrive\Documents\DotNet\ReadMindMe\ReadMindMe.Tests\obj\Debug\n
 C:\Users\canar\OneDrive\Documents\DotNet\ReadMindMe\ReadMindMe.Tests\obj\Debug\net8.0\ReadMindMe.Tests.pdb
 C:\Users\canar\OneDrive\Documents\DotNet\ReadMindMe\ReadMindMe.Tests\obj\Debug\net8.0\ReadMindMe.Tests.genruntimeconfig.cache
 C:\Users\canar\OneDrive\Documents\DotNet\ReadMindMe\ReadMindMe.Tests\obj\Debug\net8.0\ref\ReadMindMe.Tests.dll
+C:\Users\canar\OneDrive\Documents\DotNet\ReadMindMe\ReadMindMe.Tests\bin\Debug\net8.0\Npgsql.dll
+C:\Users\canar\OneDrive\Documents\DotNet\ReadMindMe\ReadMindMe.Tests\bin\Debug\net8.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll

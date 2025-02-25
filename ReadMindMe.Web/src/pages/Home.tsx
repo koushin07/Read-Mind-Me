@@ -50,7 +50,7 @@ function HomePage() {
   }, []);
   return (
     <>
-      <div className="flex-1 space-y-6">
+      <div className="flex-1 space-y-6 my-4">
         <Card>
           <CardHeader>
             <CardTitle>Create a Post </CardTitle>

@@ -16,11 +16,13 @@ public class UserService : IUserService
     private readonly IMapper _mapper;
     private readonly IPhotoService _photoService;
 
+
     public UserService(IUnitOfWork unitOfWork, IMapper mapper, IPhotoService photoService)
     {
         _unitOfWork = unitOfWork;
         _mapper = mapper;
         _photoService = photoService;
+
     }
 
     public async Task FollowUser(int authId, int userId)
@@ -122,6 +124,31 @@ public class UserService : IUserService
         };
         await _unitOfWork.UserRepository.Insert(user);
         await _unitOfWork.Complete();
+    }
+
+    public async Task<SearchDto> SearchAll(string searchTerm, int userId)
+    {
+        var posts = await _unitOfWork.PostRepository.GetAll();
+        posts = posts.Where(p =>
+            p.Content.ToLower().Contains(searchTerm.ToLower()) ||
+            p.Author.Name.ToLower().Contains(searchTerm.ToLower())
+        ).ToList();
+
+        var communities = await _unitOfWork.CommunityRepository.GetAll();
+        communities = communities.Where(c =>
+            c.Description.ToLower().Contains(searchTerm.ToLower())||
+            c.UserCommunities.Any(uc=>uc.User.Name.ToLower().Contains(searchTerm.ToLower()))
+         ).ToList();
+
+        var users = await _unitOfWork.UserRepository.GetAll();
+        users = users.Where(u => u.Name.ToLower().Contains(searchTerm.ToLower())).ToList();
+
+        return new SearchDto
+        {
+            Communities = communities.Select(c => _mapper.Map<CommunityDto>(c, opt => opt.Items["userId"] = userId)).ToList(),
+            Posts = posts.Select(_mapper.Map<PostDto>).ToList(),
+            Users = users.Select(_mapper.Map<UserDto>).ToList()
+        };
     }
 
     public async Task<UserDto> UpdateUser(UserUpdateDto userDto)

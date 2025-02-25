@@ -1,20 +1,11 @@
 import { PostResponse } from "@/features/posts/types/postType";
 import { Comment, CommentRequest } from "../types/commentType";
-import { useAuth } from "@/features/auth/hooks/use-auth";
 import { deleteComment, PostComment } from "../services/commentService";
 import { toast } from "sonner";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "@/store/store";
-import { setCurrentCommunity } from "@/features/communities/communitySlice";
 
 export const useComment = (
   setPosts: React.Dispatch<React.SetStateAction<PostResponse[]>>
 ) => {
-  const { auth } = useAuth();
-  const { currentCommunity } = useSelector(
-    (state: RootState) => state.communities
-  );
-  const dispatch = useDispatch();
 
   const handleCommentSubmit = async (post: PostResponse, content: string) => {
     console.log(content);
@@ -29,50 +20,51 @@ export const useComment = (
       content,
     };
 
-    // Generate a temporary ID for the comment (e.g., timestamp-based)
-    const tempId = Math.random();
+    // // Generate a temporary ID for the comment (e.g., timestamp-based)
+    // const tempId = Math.random();
 
-    const tempComment: Comment = {
-      id: tempId, // Temporary ID
-      user: auth.user, // Replace with actual user data if available
-      content: content,
-      avatar: "/placeholder.svg?height=32&width=32",
-    };
+    // const tempComment: Comment = {
+    //   id: tempId, // Temporary ID
+    //   user: auth.user, // Replace with actual user data if available
+    //   content: content,
+    //   avatar: "/placeholder.svg?height=32&width=32",
+    // };
 
-    if (currentCommunity) {
-      dispatch(
-        setCurrentCommunity({
-          ...currentCommunity, // Spread the existing community properties
-          posts: currentCommunity!.posts.map((p) =>
-            p.id === post.id
-              ? { ...p, comments: [...p.comments, tempComment] } // Update the specific post
-              : p
-          ),
-        })
-      );
-    }
+    // if (currentCommunity) {
+    //   console.log(currentCommunity)
+    //   dispatch(
+    //     setCurrentCommunity({
+    //       ...currentCommunity, // Spread the existing community properties
+    //       posts: currentCommunity?.posts.map((p) =>
+    //         p.id === post.id
+    //           ? { ...p, comments: [...p.comments, tempComment] } // Update the specific post
+    //           : p
+    //       ),
+    //     })
+    //   );
+    // }
 
 
     // Optimistically update state
-    setPosts((prevPosts) =>
-      prevPosts.map((p) =>
-        p.id === post.id ? { ...p, comments: [...p.comments, tempComment] } : p
-      )
-    );
+    // setPosts((prevPosts) =>
+    //   prevPosts.map((p) =>
+    //     p.id === post.id ? { ...p, comments: [...p.comments, tempComment] } : p
+    //   )
+    // );
 
     try {
       // Send the comment to the server
       const savedComment: Comment = await PostComment(request);
-      dispatch(
-        setCurrentCommunity({
-          ...currentCommunity, // Spread the existing community properties
-          posts: currentCommunity?.posts.map((p) =>
-            p.id === post.id
-              ? { ...p, comments: [...p.comments, tempComment] } // Update the specific post
-              : p
-          ),
-        })
-      );
+      // dispatch(
+      //   setCurrentCommunity({
+      //     ...currentCommunity, // Spread the existing community properties
+      //     posts: currentCommunity?.posts.map((p) =>
+      //       p.id === post.id
+      //         ? { ...p, comments: [...p.comments, tempComment] } // Update the specific post
+      //         : p
+      //     ),
+      //   })
+      // );
 
       // Replace the temporary comment with the server response
       setPosts((prevPosts) =>
@@ -80,27 +72,17 @@ export const useComment = (
           p.id === post.id
             ? {
                 ...p,
-                comments: p.comments.map((comment) =>
-                  comment.id === tempId ? savedComment : comment
-                ),
+                comments: [...p.comments, savedComment]
               }
             : p
         )
       );
+
     } catch (error: unknown) {
       console.error("Failed to post comment:", error);
 
       // Revert optimistic update on failure
-      setPosts((prevPosts) =>
-        prevPosts.map((p) =>
-          p.id === post.id
-            ? {
-                ...p,
-                comments: p.comments.filter((comment) => comment.id !== tempId),
-              }
-            : p
-        )
-      );
+
     }
   };
 

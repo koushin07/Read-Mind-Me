@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 import * as signalR from "@microsoft/signalr";
 
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { SheetTrigger, SheetContent, Sheet } from "./ui/sheet";
 import { Button } from "./ui/button";
 import { useEffect, useState } from "react";
@@ -30,9 +30,12 @@ import { User } from "@/features/user/types/user";
 import { usePresence } from "@/hooks/use-presence";
 import { setLogin } from "@/features/auth/authSlice";
 
+import { Input } from "./ui/input";
+
 function Navigation() {
-  const { auth} = useAuth()
+  const { auth } = useAuth();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
   const { handleLogout } = useAuth();
   const dispatch = useDispatch();
   const token = localStorage.getItem("token");
@@ -63,11 +66,11 @@ function Navigation() {
 
   useEffect(() => {
     const connection = new signalR.HubConnectionBuilder()
-          .withUrl("http://localhost:5081/hubs/presence", {
-            accessTokenFactory: () => token!, // Add auth token if needed
-          })
-          .withAutomaticReconnect()
-          .build();
+      .withUrl("http://localhost:5081/hubs/presence", {
+        accessTokenFactory: () => token!, // Add auth token if needed
+      })
+      .withAutomaticReconnect()
+      .build();
 
     connection
       .start()
@@ -88,13 +91,50 @@ function Navigation() {
       createConnection();
     }
   }, []);
+  const [searchTerm, setSearchTerm] = useState<string>("");
+  const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    navigate("/search?value=" + searchTerm, {replace: true});
+  };
+
   return (
-    <header className="px-4 lg:px-6 h-14 flex items-center">
+    <header className="px-4 lg:px-6 h-14 flex items-center sticky top-0 bg-background z-50 border-b">
       <Link className="flex items-center justify-center" to="/home">
         <BookOpen className="h-6 w-6 mr-2" />
         <span className="font-bold">ReadMindMe</span>
       </Link>
+      <div className="relative flex mx-auto">
+        <form onSubmit={handleSearch}>
+          <Search className="absolute left-2 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-500" />
+          <Input
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setSearchTerm(e.target.value)
+            }
+            type="text"
+            placeholder="Search..."
+            className="w-72 pl-9"
+          />
+        </form>
+      </div>
       <nav className="ml-auto flex gap-4 sm:gap-6">
+        {/* <Dialog open={isSearchOpen} onOpenChange={setIsSearchOpen}>
+        <DialogTrigger asChild>
+          <Button variant="ghost" size="icon">
+
+            <span className="sr-only">Search</span>
+          </Button>
+        </DialogTrigger>
+        <DialogContent className="sm:max-w-[425px]">
+          <DialogHeader>
+            <DialogTitle>Search</DialogTitle>
+          </DialogHeader>
+          <div className="flex w-full max-w-sm items-center space-x-2">
+
+            <Button type="submit">Search</Button>
+          </div>
+        </DialogContent>
+      </Dialog>*/}
+
         <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
           <SheetTrigger asChild>
             <Button
@@ -131,6 +171,7 @@ function Navigation() {
             </div>
           </SheetContent>
         </Sheet>
+
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" size="icon">
@@ -156,10 +197,16 @@ function Navigation() {
 
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost"  size="icon">
+            <Button variant="ghost" size="icon">
               <Avatar className="h-8 w-8">
-                <AvatarImage className="rounded-full" src={auth.user.avatar} alt="User" />
-                <AvatarFallback>{auth.user.name && auth.user.name[0]} </AvatarFallback>
+                <AvatarImage
+                  className="rounded-full"
+                  src={auth.user.avatar}
+                  alt="User"
+                />
+                <AvatarFallback>
+                  {auth.user.name && auth.user.name[0]}
+                </AvatarFallback>
               </Avatar>
             </Button>
           </DropdownMenuTrigger>
@@ -170,7 +217,6 @@ function Navigation() {
                 Settings
               </DropdownMenuItem>
             </Link>
-
             <DropdownMenuItem onClick={handleLogout}>
               <LogOut className="mr-2 h-4 w-4" />
               Log out

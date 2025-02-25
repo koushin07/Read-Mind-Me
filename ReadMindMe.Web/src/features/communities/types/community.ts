@@ -18,6 +18,7 @@ export type CommunityActivity = {
     id: number,
     user: string,
     action: string,
+    createdAt: string
 }
 
 export type CreateCommunity = {

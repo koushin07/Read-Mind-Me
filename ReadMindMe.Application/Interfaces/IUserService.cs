@@ -9,4 +9,5 @@ public interface IUserService
     Task<UserDetailDto> GetUserDetail(string slug, int userId);
     Task FollowUser(int authId, int userId);
     Task<UserDto> LoginViaGoogle(OAuthRequest auth);
+    Task<SearchDto> SearchAll(string searchTerm, int userId);
 }

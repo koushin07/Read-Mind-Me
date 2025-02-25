@@ -1,5 +1,5 @@
 import api from "@/utils/axiosConfig"
-import { User, UserDetail } from "../types/user";
+import { SearchResult, User, UserDetail } from "../types/user";
 
 export const UpdateUser = async (data: FormData): Promise<User> => {
     return api.put<User>("/User", data, {
@@ -19,4 +19,8 @@ export const FollowUser = async (userId: number): Promise<void> => {
 
 export const UnFollowUser = async (userId: number): Promise<void> => {
     api.get('/User/unfollow/' + userId)
+}
+
+export const GetSearch = async (searchTerm: string): Promise<SearchResult> => {
+    return api.get<SearchResult>('/User/Search/' + searchTerm).then(res=>res.data)
 }

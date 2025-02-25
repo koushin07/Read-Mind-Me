@@ -64,13 +64,62 @@ public class PostService : IPostService
     public async Task<List<PostDto>> GetPostsAsync()
     {
         var posts = await _unitOfWork.PostRepository.GetAll();
+        var verses = new List<string>() { "John 3:16", "Psalm 34:8" };
+
+        var appendedStart = "<span class=\"text-blue-600 after:content-['_↗']\">";
+        var appendedEnd = "</span>";
+        foreach (var post in posts)
+        {
+            var highlightedContent = post.Content;
+
+
+            foreach (var verse in verses)
+            {
+                if (post.Content.ToLower().Contains(verse.ToLower()))
+                {
+                    highlightedContent = highlightedContent.Replace(verse, $"{appendedStart}{verse}{appendedEnd}", StringComparison.OrdinalIgnoreCase);
+
+                }
+            }
+            post.Content = highlightedContent;
+        }
         return posts.Select(_mapper.Map<PostDto>).ToList();
 
     }
 
+    public async Task<List<PostDto>> GetPostTrending()
+    {
+
+        var posts = await _unitOfWork.PostRepository.GetAll();
+        var trending = posts.OrderByDescending(p => p.Likes).ToList();
+        return trending.Select(_mapper.Map<PostDto>).ToList();
+    }
+
     public async Task<List<PostDto>> GetPublicPostsAsync()
     {
+
         var posts = await _unitOfWork.PostRepository.GetPublicPost();
+        var verses = new List<string>() { "John 3:16", "Psalm 34:8" };
+
+        // var content = "when i read the book of john specifically john 3:16 it gives me hope, and psalm 34:8 brings me peace";
+
+        var appendedStart = "<span class='text-blue-600 hover:text-red-800 cursor-pointer' title='Highlighted Verse'>";
+        var appendedEnd = "</span>";
+        foreach (var post in posts)
+        {
+            var highlightedContent = post.Content;
+
+
+            foreach (var verse in verses)
+            {
+                if (post.Content.ToLower().Contains(verse.ToLower()))
+                {
+                    highlightedContent = highlightedContent.Replace(verse, $"{appendedStart}{verse}{appendedEnd}", StringComparison.OrdinalIgnoreCase);
+
+                }
+            }
+            post.Content = highlightedContent;
+        }
         return posts.Select(_mapper.Map<PostDto>).ToList();
     }
 

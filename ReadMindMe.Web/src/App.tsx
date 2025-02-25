@@ -16,6 +16,7 @@ import NotFoundPage from "./pages/NotFound";
 import AccountLayout from "./layout/AccountLayout";
 import ProfilePage from "./pages/Profile";
 import { GoogleOAuthProvider } from '@react-oauth/google';
+import SearchPage from "./pages/Search";
 // import MessageLayout from "./pages/Message";
 // import MessagePage from "./layout/MessageLayout";
 
@@ -33,9 +34,10 @@ const router = createBrowserRouter([
       { path: "/community/:slug", element: <CommunityDetailPage /> },
       // { path: "/explore", element: <ExplorePage /> },
       { path: "profile/:slug", element: <ProfilePage /> },
-
+      { path: "/search", element: <SearchPage /> },
     ],
   },
+
   {
     Component: AccountLayout,
     path: "/account",

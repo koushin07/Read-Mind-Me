@@ -9,7 +9,7 @@ import {
   CardContent,
   CardFooter,
 } from "@/components/ui/card";
-import { Users, Search, BookOpen, Plus } from "lucide-react";
+import { Users, Search, Plus } from "lucide-react";
 import { Link } from "react-router-dom";
 import CommunityCard from "@/features/communities/components/CommunityCard";
 import CommunityForm from "@/features/communities/components/CommunityForm";

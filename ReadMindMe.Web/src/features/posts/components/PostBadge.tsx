@@ -1,5 +1,6 @@
 import { PostResponse } from "../types/postType";
 import { Badge } from "@/components/ui/badge";
+import axios from "axios";
 import {
   BookOpen,
   HandHeart,
@@ -7,22 +8,50 @@ import {
   MessageCircleMore,
   MessageCircleQuestion,
 } from "lucide-react";
+import { useEffect, useState } from "react";
+
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 type PostBadgeProp = {
   post: PostResponse;
 };
 function PostBadge({ post }: PostBadgeProp) {
+  const [verse, setVerse] = useState<string>("");
+  useEffect(() => {
+    if (post.postType === "book") {
+      axios.get("https://bible-api.com/" + post.verse?.text).then((res) => {
+        console.log(res.data.text!)
+        setVerse(res.data.text!);
+      });
+    }
+  }, []);
+
+
   switch (post.postType) {
     case "book":
       return (
-        <Badge
-          variant="secondary"
-          className="flex bg-[#E5E1DA]  items-center w-fit space-x-1"
-        >
-          <BookOpen className="h-3 w-3" />
-          <span>{post.verse?.text}</span>
-          <span className="text-xs">({post.verse?.book})</span>
-        </Badge>
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger>
+              <Badge
+                variant="secondary"
+                className="flex bg-[#E5E1DA]  items-center w-fit space-x-1"
+              >
+                <BookOpen className="h-3 w-3" />
+                <span>{post.verse?.text}</span>
+                <span className="text-xs">({post.verse?.book})</span>
+              </Badge>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>{verse}</p>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
       );
     case "guide":
       return (

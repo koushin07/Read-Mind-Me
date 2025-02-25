@@ -63,10 +63,11 @@ function PostCard({
         </div>
       </CardHeader>
       <CardContent className="space-y-2">
-        <p>{post.content}</p>
+
+        <p dangerouslySetInnerHTML={{__html: post.content}}></p>
         <PostBadge post={post} />
       </CardContent>
-      <CardFooter className="flex flex-col space-y-4">
+      <CardFooter className="flex  flex-col space-y-4">
         <div className="flex space-x-12  w-full">
           <Button variant="ghost" size="sm" onClick={() => onLike(post.id)}>
             <Heart

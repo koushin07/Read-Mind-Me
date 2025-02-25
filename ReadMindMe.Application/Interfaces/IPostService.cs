@@ -6,6 +6,7 @@ public interface IPostService
 {
     Task<List<PostDto>> GetPostsAsync();
     Task<List<PostDto>> GetPublicPostsAsync();
+    Task<List<PostDto>> GetPostTrending();
     Task<PostDto> CreatePost(PublicPostDto postDto);
     Task LikePost(int id, int userId);
 

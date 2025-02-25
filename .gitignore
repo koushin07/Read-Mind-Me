@@ -1,8 +1,5 @@
-/ReadMindMe.Tests/obj
-/ReadMindMe.Application/obj
-/ReadMindMe.Domain/obj
-/ReadMindMe.Infrastructure/obj
-/ReadMindMe.Api/obj
+**/obj/
 .vscode
 obj
 .vs
+**/bin/

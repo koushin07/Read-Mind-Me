@@ -74,4 +74,16 @@ public class UserController : ControllerBase
         return Ok();
     }
 
+    [HttpGet("search/{searchTerm}")]
+    public async Task<ActionResult<SearchDto>> SearchAll(string searchTerm)
+    {
+        var userId = User.GetUserId();
+        if (userId < 0)
+        {
+            return BadRequest("no user ID");
+        }
+        var search = await _userService.SearchAll(searchTerm,userId);
+        return Ok(search);
+    }
+
 }

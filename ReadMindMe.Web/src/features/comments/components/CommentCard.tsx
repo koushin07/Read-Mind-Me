@@ -1,8 +1,4 @@
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "../../../components/ui/avatar";
+
 import { Trash2 } from "lucide-react";
 import { buttonVariants } from "../../../components/ui/button";
 import { Comment } from "../types/commentType";
@@ -18,6 +14,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
+import UserAvatar from "@/components/userAvatar";
 
 type commentProp = {
   comment: Comment;
@@ -31,10 +28,7 @@ function CommentCard({ comment, postId, onDelete }: commentProp) {
   };
   return (
     <div key={comment.id} className="flex items-start space-x-2">
-      <Avatar className="">
-        <AvatarImage src={comment.avatar} alt={comment.user.name} />
-        <AvatarFallback>{comment.user.name[0]}</AvatarFallback>
-      </Avatar>
+       <UserAvatar user={comment.user}/>
       <div className="flex-1 bg-muted p-2 rounded-md">
         <p className="font-semibold">{comment.user.name}</p>
         <p>{comment.content}</p>
