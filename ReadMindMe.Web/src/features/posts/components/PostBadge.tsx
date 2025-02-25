@@ -20,12 +20,28 @@ import {
 type PostBadgeProp = {
   post: PostResponse;
 };
+export interface BibleRespose {
+  reference: string
+  verses: Verse[]
+  text: string
+  translation_id: string
+  translation_name: string
+  translation_note: string
+}
+
+export interface Verse {
+  book_id: string
+  book_name: string
+  chapter: number
+  verse: number
+  text: string
+}
+
 function PostBadge({ post }: PostBadgeProp) {
   const [verse, setVerse] = useState<string>("");
   useEffect(() => {
     if (post.postType === "book") {
-      axios.get("https://bible-api.com/" + post.verse?.text).then((res) => {
-        console.log(res.data.text!)
+      axios.get<BibleRespose>("https://bible-api.com/" + post.verse?.text).then((res) => {
         setVerse(res.data.text!);
       });
     }
